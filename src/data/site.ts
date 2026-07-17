@@ -1,5 +1,10 @@
 // Fonte única de verdade para links, textos e dados estruturais do site.
 // Nada de URL/telefone/copy duplicado direto nos componentes — tudo passa por aqui.
+//
+// Todo dado de negócio abaixo (categorias, cursos, depoimentos, canais) foi conferido
+// contra a API do WooCommerce, a página real de /cursos e os canais oficiais de
+// YouTube/Instagram em 17/07 — ver commit que introduziu este comentário. Não adicionar
+// categoria, curso ou depoimento novo sem confirmar na fonte real primeiro.
 
 export const SITE_URL = 'https://emmusicproducoes.com.br';
 
@@ -11,7 +16,7 @@ function waLink(message: string): string {
 
 export const WHATSAPP = {
   producao: waLink('Olá! Vim pelo site da EM Music Produções e quero falar sobre meu projeto musical.'),
-  lancamento: waLink('Olá! Vim pelo site da EM Music Produções e quero entender como organizar o lançamento da minha música.'),
+  distribuicao: waLink('Olá! Vim pelo site da EM Music Produções e quero colocar minha música nas plataformas digitais.'),
   geral: waLink('Olá! Vim pelo site da EM Music Produções e quero saber mais.'),
   projeto: waLink('Olá! Vim pelo site da EM Music Produções e quero falar sobre um projeto de produção musical.'),
 };
@@ -25,10 +30,37 @@ export const EXTERNAL_LINKS = {
   redeLoopsBrasil: null as string | null,
 };
 
+// Canais oficiais confirmados por handle (17/07) — ids reais via busca no YouTube,
+// não inventar handle novo sem confirmar.
+export const SOCIAL = {
+  youtube: [
+    {
+      label: 'EM Produções Official',
+      handle: '@emproducooesofficial6670',
+      url: 'https://www.youtube.com/@emproducooesofficial6670',
+    },
+    {
+      label: 'Prod. Eder Machado',
+      handle: '@PRODERMACHADO',
+      url: 'https://www.youtube.com/@PRODERMACHADO',
+    },
+    {
+      label: 'ED Tutoriais',
+      handle: '@EDTUTORIAIS',
+      url: 'https://www.youtube.com/@EDTUTORIAIS',
+    },
+  ],
+  instagram: [
+    { label: 'EM Music Produções', handle: '@emmusicproducoes', url: 'https://www.instagram.com/emmusicproducoes' },
+    { label: 'ED Tutoriais', handle: '@edtutoriaiss', url: 'https://www.instagram.com/edtutoriaiss' },
+    { label: 'Prod. Eder Machado', handle: '@prod_eder_machado', url: 'https://www.instagram.com/prod_eder_machado/' },
+  ],
+};
+
 export const SEO = {
-  title: 'EM Music Produções | Produção Musical, Loops e Cursos',
+  title: 'EM Music Produções | Produção Musical e Distribuição Digital',
   description:
-    'Produção musical, videoclipes, orientação para artistas, loops, bibliotecas Kontakt, arquivos WAV e cursos de produção musical.',
+    'Produção musical, arranjo, mixagem, masterização, videoclipe e distribuição para plataformas digitais. Loops, bibliotecas Kontakt e cursos de produção musical pela ED Tutoriais.',
   ogImage: '/images/og-em-music.jpg', // ainda não existe — ver Base.astro
 };
 
@@ -37,6 +69,7 @@ export type NavItem = { label: string; href: string };
 export const NAV_ITEMS: NavItem[] = [
   { label: 'Produção Musical', href: '#producao' },
   { label: 'Serviços', href: '#servicos' },
+  { label: 'Vídeos', href: '#videos' },
   { label: 'Loops e Instrumentos', href: '#loops' },
   { label: 'Cursos', href: '#cursos' },
   { label: 'Ecossistema', href: '#ecossistema' },
@@ -82,11 +115,11 @@ export const PATHWAYS: Pathway[] = [
   },
   {
     number: '04',
-    eyebrow: 'Quero lançar',
-    title: 'QUERO ORGANIZAR MEU LANÇAMENTO',
-    body: 'Preciso de orientação para organizar meu projeto, cadastrar minha música e preparar o lançamento.',
-    cta: 'CONHECER AS OPÇÕES',
-    href: WHATSAPP.lancamento,
+    eyebrow: 'Já tenho a música',
+    title: 'QUERO COLOCAR MINHA MÚSICA NAS PLATAFORMAS',
+    body: 'Já tenho a música pronta e preciso cadastrar e distribuir para Spotify, YouTube Music e as demais plataformas digitais.',
+    cta: 'FALAR SOBRE DISTRIBUIÇÃO',
+    href: WHATSAPP.distribuicao,
     external: true,
   },
 ];
@@ -106,26 +139,31 @@ export const SERVICES: string[] = [
 
 export type BrandCategory = { label: string };
 
+// Confirmado contra a API de categorias do WooCommerce (edtutoriais.com.br) em 17/07 —
+// só nomes que realmente existem como categoria de produto. "Instrumentos regionais"
+// foi removido por não existir.
 export const ED_TUTORIAIS_CATEGORIES: BrandCategory[] = [
   { label: 'Bibliotecas Kontakt' },
   { label: 'Loops em WAV' },
-  { label: 'MIDI' },
-  { label: 'Baterias' },
-  { label: 'Guitarras e violões' },
-  { label: 'Baixos' },
-  { label: 'Teclados' },
-  { label: 'Instrumentos regionais' },
+  { label: 'Pacote Waves' },
+  { label: 'Violão' },
+  { label: 'Guitarra' },
+  { label: 'Bateria e percussão' },
+  { label: 'Sanfona e acordeon' },
+  { label: 'Piano' },
   { label: 'Produtos gratuitos' },
 ];
 
 export type CoursePath = { title: string };
 
+// Temas confirmados na meta descrição real de edtutoriais.com.br/cursos — a página
+// carrega o catálogo via JS, então não listamos nome de curso específico que não
+// conseguimos confirmar (ex: não existe curso de "REAPER" confirmado).
 export const COURSE_PATHS: CoursePath[] = [
-  { title: 'Começar do zero' },
-  { title: 'Produzir no REAPER' },
-  { title: 'Melhorar mixagem e masterização' },
-  { title: 'Aprender Kontakt' },
-  { title: 'Produzir ritmos brasileiros' },
+  { title: 'Produção musical do zero' },
+  { title: 'Mixagem e masterização' },
+  { title: 'Produção com Kontakt' },
+  { title: 'Cursos e downloads gratuitos' },
 ];
 
 export type ProcessStep = { number: string; title: string };
@@ -182,6 +220,108 @@ export const BRANDS: Brand[] = [
   },
 ];
 
+export type Video = {
+  id: string;
+  title: string;
+  channelLabel: string;
+  channelUrl: string;
+  thumbnail: string;
+  url: string;
+};
+
+// Vídeos reais dos 3 canais oficiais, escolhidos pelo desempenho real (views) via
+// dados do YouTube em 17/07. Nunca trocar por thumbnail/vídeo genérico de banco.
+export const VIDEOS: Video[] = [
+  {
+    id: 'sBPhjQT0CIw',
+    title: 'Adriano Lima — A Casa É Nossa (clipe oficial)',
+    channelLabel: 'EM Produções',
+    channelUrl: SOCIAL.youtube[0].url,
+    thumbnail: 'https://i.ytimg.com/vi/sBPhjQT0CIw/maxresdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=sBPhjQT0CIw',
+  },
+  {
+    id: 't42Vel5o7f8',
+    title: 'Desperta-me — Eder Machado feat. Júlia Fernandes (clipe oficial)',
+    channelLabel: 'Prod. Eder Machado',
+    channelUrl: SOCIAL.youtube[1].url,
+    thumbnail: 'https://i.ytimg.com/vi/t42Vel5o7f8/maxresdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=t42Vel5o7f8',
+  },
+  {
+    id: 'xNcooYAr_r0',
+    title: 'Rafaela — Adriano Lima (clipe oficial)',
+    channelLabel: 'EM Produções',
+    channelUrl: SOCIAL.youtube[0].url,
+    thumbnail: 'https://i.ytimg.com/vi/xNcooYAr_r0/maxresdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=xNcooYAr_r0',
+  },
+  {
+    id: 'Gbb0YlkDSLk',
+    title: 'Yahweh — Júlia Fernandes',
+    channelLabel: 'Prod. Eder Machado',
+    channelUrl: SOCIAL.youtube[1].url,
+    thumbnail: 'https://i.ytimg.com/vi/Gbb0YlkDSLk/maxresdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=Gbb0YlkDSLk',
+  },
+  {
+    id: 'ej08AN8_xIo',
+    title: 'Como resolver "No Library Found" no Kontakt',
+    channelLabel: 'ED Tutoriais',
+    channelUrl: SOCIAL.youtube[2].url,
+    thumbnail: 'https://i.ytimg.com/vi/ej08AN8_xIo/maxresdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=ej08AN8_xIo',
+  },
+  {
+    id: 'Cx4iqoDWMLs',
+    title: 'Como lançar pads pelo celular (app grátis M PADS)',
+    channelLabel: 'ED Tutoriais',
+    channelUrl: SOCIAL.youtube[2].url,
+    thumbnail: 'https://i.ytimg.com/vi/Cx4iqoDWMLs/maxresdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=Cx4iqoDWMLs',
+  },
+];
+
+export type Testimonial = { quote: string; name: string; role: string };
+
+// Depoimentos reais, copiados da página de produto edtutoriais.com.br (17/07) —
+// mesma equipe/mesmo produtor (Eder Machado) por trás da EM Music. Não inventar
+// depoimento novo: só usar o que está publicado na fonte.
+export const TESTIMONIALS: Testimonial[] = [
+  {
+    quote:
+      'A ED Tutoriais tem absolutamente tudo que um produtor precisa! Acabei de adquirir a incrível Biblioteca Nordeste com meu parceiro e mestre da produção, Eder Machado! Qualidade de sobra.',
+    name: 'Dorgival Dantas',
+    role: 'Artista, músico e compositor — Olho D’Água do Borges/RN',
+  },
+  {
+    quote:
+      'Passando aqui para recomendar as bibliotecas da ED Tutoriais do Eder Machado e minha amiga Tamara Tore. Bibliotecas excelentes, muito usadas e respeitadas aqui no Belém do Pará.',
+    name: 'Maycon Danin',
+    role: 'Maestro, pesquisador da cultura popular e produtor musical',
+  },
+  {
+    quote:
+      'Grandes gravadoras e produtores de hits do momento estão apostando nos instrumentos e loops produzidos por Eder Machado.',
+    name: 'Fella Brown',
+    role: 'Produtor musical de "Zona de Perigo", sucesso de Leo Santana',
+  },
+];
+
+export type Founder = { name: string; role: string; instagram?: string };
+
+export const FOUNDERS: Founder[] = [
+  {
+    name: 'Eder Machado',
+    role: 'Fundador da ED Tutoriais, sócio da Rede Loops Brasil e CEO da Prod. Eder Machado.',
+    instagram: SOCIAL.instagram[2].url,
+  },
+  {
+    name: 'Tamara Tore',
+    role: 'Sócia e CEO da ED Tutoriais, sócia da Rede Loops Brasil.',
+  },
+];
+
 export const MOBILE_ACTIONS = [
   { label: 'Produzir', href: WHATSAPP.producao, external: true },
   { label: 'Loops', href: EXTERNAL_LINKS.edTutoriais, external: true },
@@ -195,6 +335,7 @@ export const FOOTER_LINKS = {
       links: [
         { label: 'Produção Musical', href: '#producao' },
         { label: 'Serviços', href: '#servicos' },
+        { label: 'Vídeos', href: '#videos' },
       ],
     },
     {

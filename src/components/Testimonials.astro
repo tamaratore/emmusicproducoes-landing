@@ -1,0 +1,54 @@
+---
+import { TESTIMONIALS, FOUNDERS } from '../data/site';
+---
+
+<section class="relative bg-void-raised py-24 sm:py-32">
+  <div class="container-editorial">
+    <p class="eyebrow" data-reveal>Quem já trabalhou com a gente</p>
+    <h2 class="mt-3 max-w-2xl font-display text-[clamp(2.25rem,6vw,4rem)] uppercase leading-[1.05] tracking-[0.01em] text-paper" data-reveal>
+      Som usado por quem faz música pra valer
+    </h2>
+
+    <div class="mt-14 grid gap-px overflow-hidden rounded-sm bg-mist/10 sm:grid-cols-3">
+      {
+        TESTIMONIALS.map((t) => (
+          <figure class="flex min-h-[16rem] flex-col justify-between bg-void-raised p-7" data-reveal>
+            <span class="font-display text-3xl leading-none text-signal-pink" aria-hidden="true">
+              "
+            </span>
+            <blockquote class="mt-4 flex-1 text-sm leading-relaxed text-paper/85 sm:text-base">
+              {t.quote}
+            </blockquote>
+            <figcaption class="mt-6 border-t border-mist/15 pt-4">
+              <p class="font-display text-sm uppercase tracking-wide text-paper">{t.name}</p>
+              <p class="mt-1 text-xs text-mist">{t.role}</p>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+
+    <div class="mt-16 flex flex-col gap-8 border-t border-mist/15 pt-12 sm:flex-row sm:gap-16">
+      {
+        FOUNDERS.map((founder) => (
+          <div class="max-w-sm">
+            <p class="font-display text-lg uppercase tracking-wide text-paper">{founder.name}</p>
+            <p class="mt-2 text-sm text-mist">{founder.role}</p>
+            {founder.instagram && (
+              <a
+                href={founder.instagram}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group mt-3 inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-signal-pink"
+              >
+                Seguir no Instagram
+                <span class="sr-only"> (abre em nova aba)</span>
+                <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">→</span>
+              </a>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

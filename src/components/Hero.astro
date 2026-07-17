@@ -73,7 +73,7 @@ const hasHeroPoster = publicFileExists('images/hero-poster.jpg');
     <p class="eyebrow mb-6" data-reveal>EM Music Produções</p>
 
     <h1
-      class="max-w-4xl font-display text-[clamp(2.75rem,9vw,6.5rem)] uppercase leading-[0.92] text-paper text-balance"
+      class="max-w-4xl font-display text-[clamp(2.75rem,9vw,6.5rem)] uppercase leading-[1.05] tracking-[0.01em] text-paper text-balance"
     >
       <span class="block overflow-hidden"><span class="block" data-reveal-line>SUA MÚSICA</span></span>
       <span class="block overflow-hidden"><span class="block" data-reveal-line>PRECISA SE</span></span>
@@ -106,10 +106,13 @@ const hasHeroPoster = publicFileExists('images/hero-poster.jpg');
     </div>
   </div>
 
-  <div class="relative pb-8">
-    <div class="container-editorial flex items-center gap-3 text-mist">
-      <span class="eyebrow !text-mist/60">Role para explorar</span>
+  <div class="relative pb-10">
+    <div class="container-editorial flex items-center gap-4 text-mist">
+      <span class="eyebrow !text-paper/70">Role para explorar</span>
       <span class="hairline flex-1"></span>
+      <span class="scroll-cue flex h-8 w-5 shrink-0 justify-center rounded-full border border-paper/30 pt-1.5" aria-hidden="true">
+        <span class="scroll-cue-dot h-1.5 w-1.5 rounded-full bg-signal-pink"></span>
+      </span>
     </div>
   </div>
 </section>
@@ -121,5 +124,31 @@ const hasHeroPoster = publicFileExists('images/hero-poster.jpg');
       linear-gradient(0deg, rgba(242, 239, 234, 0.5) 1px, transparent 1px);
     background-size: 64px 64px;
     mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
+  }
+
+  @keyframes scroll-cue-move {
+    0% {
+      opacity: 0;
+      transform: translateY(0);
+    }
+    30% {
+      opacity: 1;
+    }
+    70% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(0.55rem);
+    }
+  }
+  .scroll-cue-dot {
+    animation: scroll-cue-move 1.8s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-cue-dot {
+      animation: none;
+      opacity: 1;
+    }
   }
 </style>
