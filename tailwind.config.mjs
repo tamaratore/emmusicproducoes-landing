@@ -14,7 +14,7 @@ export default {
         paper: {
           DEFAULT: '#F7F4EE',
         },
-        // paleta oficial da marca (mesmo gradiente da logo real) — não usar
+        // paleta oficial da marca (mesmo gradiente da logo real), não usar
         // laranja/dourado em lugar nenhum do site
         brand: {
           purple: '#7429A8',

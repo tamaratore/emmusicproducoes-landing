@@ -23,7 +23,7 @@
   text-wrap: balance;
 }
 
-/* equalizador simples do hero — CSS puro, sempre visível, sem depender de scroll/JS */
+/* equalizador simples do hero, CSS puro, sempre visível, sem depender de scroll/JS */
 .eq-bar {
   height: 40%;
   transform-origin: bottom;
@@ -52,7 +52,7 @@
   }
 }
 
-/* brilho de borda com a cor da logo (roxo->rosa) ao passar o mouse nos cards —
+/* brilho de borda com a cor da logo (roxo->rosa) ao passar o mouse nos cards:
    só cor, sem mover/escalar nada (nunca usar tração/scale no hover aqui) */
 .glow-card {
   position: relative;
@@ -75,7 +75,7 @@
   opacity: 1;
 }
 
-/* botão flutuante de WhatsApp — sempre visível, chamando atenção com pulso suave */
+/* botão flutuante de WhatsApp, sempre visível, chamando atenção com pulso suave */
 .whatsapp-float {
   animation: whatsapp-pulse 2.4s ease-in-out infinite;
 }
