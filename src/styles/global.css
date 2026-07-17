@@ -51,3 +51,47 @@
     transform: scaleY(0.7);
   }
 }
+
+/* brilho de borda com a cor da logo (roxo->rosa) ao passar o mouse nos cards */
+.glow-card {
+  position: relative;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.glow-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(135deg, #7429a8, #cb287d, #ef3d9a);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.glow-card:hover {
+  transform: translateY(-3px);
+}
+.glow-card:hover::before {
+  opacity: 1;
+}
+
+/* botão flutuante de WhatsApp — sempre visível, chamando atenção com pulso suave */
+.whatsapp-float {
+  animation: whatsapp-pulse 2.4s ease-in-out infinite;
+}
+@keyframes whatsapp-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-float {
+    animation: none;
+  }
+}

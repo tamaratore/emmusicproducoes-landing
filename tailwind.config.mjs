@@ -22,6 +22,10 @@ export default {
           DEFAULT: '#E8A93A',
           dim: '#9C6E1E',
         },
+        brand: {
+          purple: '#7429A8',
+          pink: '#EF3D9A',
+        },
       },
       fontFamily: {
         display: ['"Anton"', 'sans-serif'],
