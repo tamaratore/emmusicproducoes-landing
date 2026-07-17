@@ -36,6 +36,15 @@ const paths = [
   },
 ];
 
+// logos oficiais de cada plataforma, hospedados pela própria Ditto Music (CDN
+// assets.ffm.to), extraídos das smart links reais em 17/07
+const PLATFORM_LOGOS = {
+  spotify: 'https://cloudinary-cdn.ffm.to/s--DnYCoqSX--/w_64,h_64,c_limit/f_webp/https%3A%2F%2Fassets.ffm.to%2Fimages%2Flogo%2Fmusic-service_spotify_without_text.png',
+  apple: 'https://cloudinary-cdn.ffm.to/s--tXfmuRiI--/w_64,h_64,c_limit/f_webp/https%3A%2F%2Fassets.ffm.to%2Fimages%2Flogo%2Fmusic-service_applemusic_without_text.png',
+  deezer: 'https://cloudinary-cdn.ffm.to/s--8rjR1rrJ--/w_64,h_64,c_limit/f_webp/https%3A%2F%2Fassets.ffm.to%2Fimages%2Flogo%2Fmusic-service_deezer_without_text_new.png',
+  youtube: 'https://cloudinary-cdn.ffm.to/s--3lH9NQ9o--/w_64,h_64,c_limit/f_webp/https%3A%2F%2Fassets.ffm.to%2Fimages%2Flogo%2Fmusic-service_youtube_without_text.png',
+};
+
 // lançamentos reais distribuídos via Ditto Music (confirmados 17/07 direto nas smart links
 // ditto.fm), ordenados do mais novo pro mais antigo
 const releases = [
@@ -139,6 +148,21 @@ const videos = [
     title: 'Retrovisor - Izzaqui ell (Clipe Oficial)',
     thumb: 'https://i.ytimg.com/vi/mHuzaYhuR58/maxresdefault.jpg',
     url: 'https://www.youtube.com/watch?v=mHuzaYhuR58',
+  },
+  {
+    title: 'Desesperado - Eder Machado (Clipe Oficial)',
+    thumb: 'https://i.ytimg.com/vi/1Bi34Cl2PXQ/maxresdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=1Bi34Cl2PXQ',
+  },
+  {
+    title: 'Paternidade - Steyce & Eder Machado (Clipe Oficial)',
+    thumb: 'https://i.ytimg.com/vi/Yl8LCjlkon0/maxresdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=Yl8LCjlkon0',
+  },
+  {
+    title: 'É Tua Graça - Di Almeida (Clipe Oficial)',
+    thumb: 'https://i.ytimg.com/vi/rSFLOgO0SMs/maxresdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=rSFLOgO0SMs',
   },
   {
     title: 'Adriano Lima - A Casa É Nossa',
@@ -310,32 +334,40 @@ const videos = [
                     href={r.spotify}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="rounded-full border border-ink-line px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-paper/70 transition hover:border-brand-pink hover:text-paper"
+                    aria-label={`Ouvir ${r.title} no Spotify`}
+                    class="flex items-center gap-1.5 rounded-full border border-ink-line py-1 pl-1 pr-2.5 text-[11px] font-semibold text-paper/70 transition hover:border-brand-pink hover:text-paper"
                   >
+                    <img src={PLATFORM_LOGOS.spotify} alt="" class="h-4 w-4" loading="lazy" />
                     Spotify
                   </a>
                   <a
                     href={r.apple}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="rounded-full border border-ink-line px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-paper/70 transition hover:border-brand-pink hover:text-paper"
+                    aria-label={`Ouvir ${r.title} no Apple Music`}
+                    class="flex items-center gap-1.5 rounded-full border border-ink-line py-1 pl-1 pr-2.5 text-[11px] font-semibold text-paper/70 transition hover:border-brand-pink hover:text-paper"
                   >
+                    <img src={PLATFORM_LOGOS.apple} alt="" class="h-4 w-4" loading="lazy" />
                     Apple Music
                   </a>
                   <a
                     href={r.deezer}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="rounded-full border border-ink-line px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-paper/70 transition hover:border-brand-purple hover:text-paper"
+                    aria-label={`Ouvir ${r.title} no Deezer`}
+                    class="flex items-center gap-1.5 rounded-full border border-ink-line py-1 pl-1 pr-2.5 text-[11px] font-semibold text-paper/70 transition hover:border-brand-purple hover:text-paper"
                   >
+                    <img src={PLATFORM_LOGOS.deezer} alt="" class="h-4 w-4" loading="lazy" />
                     Deezer
                   </a>
                   <a
                     href={r.youtube}
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="rounded-full border border-ink-line px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-paper/70 transition hover:border-brand-purple hover:text-paper"
+                    aria-label={`Assistir ${r.title} no YouTube`}
+                    class="flex items-center gap-1.5 rounded-full border border-ink-line py-1 pl-1 pr-2.5 text-[11px] font-semibold text-paper/70 transition hover:border-brand-purple hover:text-paper"
                   >
+                    <img src={PLATFORM_LOGOS.youtube} alt="" class="h-4 w-4" loading="lazy" />
                     YouTube
                   </a>
                 </div>
