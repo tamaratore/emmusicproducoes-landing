@@ -2,7 +2,7 @@
 export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   darkMode: ['class', '[data-theme="dark"]'],
-  safelist: ['text-signal', 'text-gospel'],
+  safelist: ['text-brand-pink', 'text-brand-purple'],
   theme: {
     extend: {
       colors: {
@@ -14,14 +14,8 @@ export default {
         paper: {
           DEFAULT: '#F7F4EE',
         },
-        signal: {
-          DEFAULT: '#FF5A1F',
-          dim: '#B23E12',
-        },
-        gospel: {
-          DEFAULT: '#E8A93A',
-          dim: '#9C6E1E',
-        },
+        // paleta oficial da marca (mesmo gradiente da logo real) — não usar
+        // laranja/dourado em lugar nenhum do site
         brand: {
           purple: '#7429A8',
           pink: '#EF3D9A',
