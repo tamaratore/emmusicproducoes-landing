@@ -1,12 +1,18 @@
 ---
 import '../styles/global.css';
+import { SITE_URL, SEO } from '../data/site';
+import { publicFileExists } from '../utils/assets';
 
 interface Props {
-  title: string;
-  description: string;
+  title?: string;
+  description?: string;
 }
 
-const { title, description } = Astro.props;
+const { title = SEO.title, description = SEO.description } = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, SITE_URL).toString();
+const hasFavicon = publicFileExists('favicon.svg') || publicFileExists('favicon.ico');
+const hasOgImage = publicFileExists(SEO.ogImage);
 ---
 
 <!doctype html>
@@ -17,12 +23,38 @@ const { title, description } = Astro.props;
     <meta name="theme-color" content="#050505" />
     <meta name="color-scheme" content="dark" />
     <meta name="robots" content="index, follow" />
+
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="EM Music Produções" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    {
+      hasOgImage && (
+        <meta property="og:image" content={new URL(SEO.ogImage, SITE_URL).toString()} />
+      )
+    }
+    <!--
+      Imagem social ainda não existe no projeto. Quando disponível, adicionar em:
+      public/images/og-em-music.jpg (recomendado 1200x630px)
+      A tag og:image só é emitida quando o arquivo existe (ver publicFileExists acima)
+      — nunca aponta para um caminho quebrado.
+    -->
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    {hasFavicon && <link rel="icon" href="/favicon.svg" type="image/svg+xml" />}
+    <!-- Favicon ainda não existe no projeto: adicionar public/favicon.svg (ou .ico) -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -30,7 +62,8 @@ const { title, description } = Astro.props;
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body class="bg-void text-paper font-body antialiased">
+    <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
     <slot />
   </body>
 </html>
