@@ -1,0 +1,52 @@
+---
+import { NAV_ITEMS, WHATSAPP } from '../data/site';
+---
+
+<div
+  id="mobile-menu"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Menu de navegação"
+  class="fixed inset-0 z-overlay flex flex-col bg-void opacity-0 pointer-events-none lg:hidden"
+  data-mobile-menu
+>
+  <div class="container-editorial flex h-[--header-h] items-center justify-end" style="--header-h: 4.5rem;">
+    <button
+      type="button"
+      id="menu-close"
+      class="inline-flex h-11 w-11 items-center justify-center text-3xl leading-none text-paper"
+      aria-label="Fechar menu"
+    >
+      &times;
+    </button>
+  </div>
+
+  <nav aria-label="Navegação móvel" class="container-editorial flex flex-1 flex-col justify-center gap-2">
+    <ul class="flex flex-col gap-1">
+      {
+        NAV_ITEMS.map((item, i) => (
+          <li class="border-t border-mist/15 first:border-t-0">
+            <a
+              href={item.href}
+              data-mobile-link
+              class="block py-5 font-display text-3xl uppercase tracking-wide text-paper transition-colors hover:text-gradient-signal"
+              style={`transition-delay:${i * 40}ms`}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <a
+      href={WHATSAPP.geral}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-mobile-link
+      class="btn-primary mt-8 w-full"
+    >
+      Falar no WhatsApp
+    </a>
+  </nav>
+</div>

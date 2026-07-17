@@ -1,0 +1,76 @@
+---
+import { ED_TUTORIAIS_CATEGORIES, EXTERNAL_LINKS } from '../data/site';
+import { publicFileExists } from '../utils/assets';
+
+const logoExists = publicFileExists('images/brands/ed-tutoriais.png');
+---
+
+<section id="loops" class="relative py-24 sm:py-32">
+  <div class="container-editorial grid gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+    <div>
+      <p class="eyebrow" data-reveal>Loops e instrumentos</p>
+      <h2 class="mt-3 font-display text-[clamp(2.25rem,6vw,4rem)] uppercase leading-[0.95] text-paper" data-reveal>
+        Ferramentas para sua produção
+      </h2>
+      <p class="mt-5 max-w-md text-mist" data-reveal>
+        Loops, instrumentos virtuais e bibliotecas para acelerar sua produção musical.
+      </p>
+
+      <div class="mt-8 flex items-center gap-4" data-reveal>
+        {
+          logoExists ? (
+            <img src="/images/brands/ed-tutoriais.png" alt="ED Tutoriais" class="h-10 w-auto" />
+          ) : (
+            <span class="eyebrow rounded-sm border border-mist/30 px-3 py-2 !text-paper/70">
+              ED Tutoriais <span class="text-mist">· placeholder</span>
+            </span>
+          )
+        }
+      </div>
+
+      <div class="mt-10 flex flex-wrap gap-3" data-reveal>
+        <a href={EXTERNAL_LINKS.edTutoriais} target="_blank" rel="noopener noreferrer" class="btn-primary" data-magnetic>
+          Comprar loops e instrumentos<span class="sr-only"> (abre em nova aba)</span>
+        </a>
+        <a href={EXTERNAL_LINKS.edTutoriais} target="_blank" rel="noopener noreferrer" class="btn-outline" data-magnetic>
+          Conhecer a ED Tutoriais<span class="sr-only"> (abre em nova aba)</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="rounded-sm border border-mist/15 bg-void-raised" data-reveal>
+      <div class="flex items-center gap-2 border-b border-mist/15 px-5 py-3">
+        <span class="h-2 w-2 rounded-full bg-signal-purple"></span>
+        <span class="h-2 w-2 rounded-full bg-signal-magenta"></span>
+        <span class="h-2 w-2 rounded-full bg-signal-pink"></span>
+        <span class="eyebrow ml-2 !text-mist/50">biblioteca.edt</span>
+      </div>
+      <ul class="divide-y divide-mist/10">
+        {
+          ED_TUTORIAIS_CATEGORIES.map((cat, i) => (
+            <li>
+              <a
+                href={EXTERNAL_LINKS.edTutoriais}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex items-center gap-4 px-5 py-4 transition-colors hover:bg-white/[0.03]"
+              >
+                <span class="h-6 w-[3px] shrink-0 bg-gradient-to-b from-signal-purple via-signal-magenta to-signal-pink opacity-40 transition-opacity group-hover:opacity-100" />
+                <span class="flex-1 font-body text-sm font-semibold uppercase tracking-wide text-paper/85 sm:text-base">
+                  {cat.label}
+                </span>
+                <span
+                  aria-hidden="true"
+                  class="text-mist/50 transition-all group-hover:translate-x-1 group-hover:text-signal-pink"
+                >
+                  →
+                </span>
+                <span class="sr-only"> (abre em nova aba)</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

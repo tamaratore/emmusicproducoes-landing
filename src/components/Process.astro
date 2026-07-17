@@ -1,0 +1,54 @@
+---
+import { PROCESS_STEPS } from '../data/site';
+import SoundWave from './SoundWave.astro';
+---
+
+<section id="processo" class="relative py-24 sm:py-32">
+  <div class="container-editorial">
+    <p class="eyebrow" data-reveal>Como funciona</p>
+    <h2 class="mt-3 max-w-2xl font-display text-[clamp(2.25rem,6vw,4rem)] uppercase leading-[0.95] text-paper" data-reveal>
+      Como o projeto avança
+    </h2>
+
+    <!-- Desktop: onda de progresso conectando as 4 etapas, avança com o scroll -->
+    <div class="relative mt-24 hidden lg:block" data-process-desktop>
+      <div class="pointer-events-none absolute inset-x-0 -top-8 h-20">
+        <SoundWave variant="progress" seed="process" id="process" strokeWidth={3} class="h-full w-full" />
+      </div>
+      <div class="grid grid-cols-4 gap-8">
+        {
+          PROCESS_STEPS.map((step) => (
+            <div data-reveal class="pt-2">
+              <span class="font-display text-3xl text-gradient-signal">{step.number}</span>
+              <p class="mt-4 font-display text-xl uppercase leading-tight text-paper">{step.title}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Mobile: leitura vertical simples, sem depender de scroll-jacking -->
+    <div class="mt-14 flex flex-col lg:hidden">
+      {
+        PROCESS_STEPS.map((step, i) => (
+          <div data-reveal class="relative flex gap-5 pb-10">
+            {i < PROCESS_STEPS.length - 1 && (
+              <span
+                class="absolute left-[0.85rem] top-9 h-full w-[2px] bg-gradient-to-b from-signal-purple via-signal-magenta to-signal-pink opacity-40"
+                aria-hidden="true"
+              />
+            )}
+            <span class="relative z-10 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-void-raised font-display text-xs text-signal-pink ring-1 ring-mist/30">
+              {i + 1}
+            </span>
+            <p class="pt-0.5 font-display text-lg uppercase leading-tight text-paper">{step.title}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="mt-4 max-w-lg text-sm text-mist" data-reveal>
+      Cada etapa é conversada com você antes de avançar — sem prazo fixo prometido de antemão.
+    </p>
+  </div>
+</section>

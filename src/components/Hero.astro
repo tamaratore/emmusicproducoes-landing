@@ -1,0 +1,125 @@
+---
+import SoundWave from './SoundWave.astro';
+import { WHATSAPP, EXTERNAL_LINKS } from '../data/site';
+import { publicFileExists } from '../utils/assets';
+
+const hasHeroVideo = publicFileExists('videos/em-music-hero.mp4');
+const hasHeroPoster = publicFileExists('images/hero-poster.jpg');
+---
+
+<!-- ABERTURA ANIMADA — cobre a tela por ~1-2s, revela a onda e a marca, some.
+     sessionStorage evita repetir na mesma sessão. Ver src/scripts/animations.ts -->
+<div
+  id="intro-overlay"
+  class="fixed inset-0 z-intro flex items-center justify-center bg-void"
+  data-intro
+  aria-hidden="true"
+>
+  <div class="flex flex-col items-center gap-5 px-6">
+    <SoundWave seed="intro" class="w-56 sm:w-72" strokeWidth={4} animated={false} />
+    <p
+      class="font-display text-lg tracking-[0.4em] text-paper opacity-0 sm:text-xl"
+      data-intro-brand
+    >
+      EM MUSIC
+    </p>
+  </div>
+</div>
+<script is:inline>
+  (function () {
+    try {
+      if (sessionStorage.getItem('emmusic-intro-seen')) {
+        var el = document.getElementById('intro-overlay');
+        if (el) el.style.display = 'none';
+      }
+    } catch (e) {}
+  })();
+</script>
+
+<section id="topo" class="relative flex min-h-[100svh] flex-col overflow-hidden pt-[--header-h]" style="--header-h: 4.5rem;">
+  <!-- fundo abstrato: grid editorial + timeline + waveform, nunca imagem de banco -->
+  <div class="pointer-events-none absolute inset-0" aria-hidden="true">
+    <div class="absolute inset-0 opacity-[0.14]" data-hero-grid></div>
+    <div class="absolute inset-x-0 top-1/2 -translate-y-1/2 opacity-[0.22]">
+      <SoundWave seed="hero-bg" strokeWidth={2} class="w-full h-[40vh]" />
+    </div>
+    <div class="absolute inset-x-0 bottom-0 h-24 bg-void-fade"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-void/40 via-transparent to-void"></div>
+  </div>
+
+  {
+    hasHeroVideo && (
+      <video
+        class="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-30"
+        autoplay
+        muted
+        loop
+        playsinline
+        poster={hasHeroPoster ? '/images/hero-poster.jpg' : undefined}
+        aria-hidden="true"
+      >
+        <source src="/videos/em-music-hero.mp4" type="video/mp4" />
+      </video>
+    )
+  }
+  <!--
+    Vídeo de fundo ainda não existe. Estrutura pronta pra receber:
+    public/videos/em-music-hero.mp4 (autoplay mudo, loop, playsinline)
+    public/images/hero-poster.jpg (poster opcional)
+    Enquanto os arquivos não existirem, o hero usa só a composição abstrata acima.
+  -->
+
+  <div class="container-editorial relative flex flex-1 flex-col justify-center py-16 sm:py-20">
+    <p class="eyebrow mb-6" data-reveal>EM Music Produções</p>
+
+    <h1
+      class="max-w-4xl font-display text-[clamp(2.75rem,9vw,6.5rem)] uppercase leading-[0.92] text-paper text-balance"
+    >
+      <span class="block overflow-hidden"><span class="block" data-reveal-line>SUA MÚSICA</span></span>
+      <span class="block overflow-hidden"><span class="block" data-reveal-line>PRECISA SE</span></span>
+      <span class="block overflow-hidden"
+        ><span class="block text-gradient-signal" data-reveal-line>MOVER.</span></span
+      >
+    </h1>
+
+    <p class="mt-7 max-w-xl text-base text-mist sm:text-lg" data-reveal>
+      A EM Music conecta artistas, músicos e produtores a tudo o que precisam para criar, produzir,
+      aprender e lançar música.
+    </p>
+
+    <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap" data-reveal>
+      <a href={WHATSAPP.producao} target="_blank" rel="noopener noreferrer" class="btn-primary" data-magnetic>
+        Produzir minha música<span class="sr-only"> (abre no WhatsApp em nova aba)</span>
+      </a>
+      <a href={EXTERNAL_LINKS.edTutoriais} target="_blank" rel="noopener noreferrer" class="btn-outline" data-magnetic>
+        Comprar loops e instrumentos<span class="sr-only"> (abre em nova aba)</span>
+      </a>
+      <a
+        href={EXTERNAL_LINKS.edTutoriaisCursos}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-outline"
+        data-magnetic
+      >
+        Fazer cursos<span class="sr-only"> (abre em nova aba)</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="relative pb-8">
+    <div class="container-editorial flex items-center gap-3 text-mist">
+      <span class="eyebrow !text-mist/60">Role para explorar</span>
+      <span class="hairline flex-1"></span>
+    </div>
+  </div>
+</section>
+
+<style>
+  [data-hero-grid] {
+    background-image:
+      linear-gradient(90deg, rgba(242, 239, 234, 0.5) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(242, 239, 234, 0.5) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse at center, black 0%, transparent 75%);
+  }
+</style>

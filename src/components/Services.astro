@@ -1,0 +1,46 @@
+---
+import { SERVICES, WHATSAPP } from '../data/site';
+import SoundWave from './SoundWave.astro';
+---
+
+<section id="servicos" class="relative overflow-hidden bg-void-raised py-24 sm:py-32">
+  <div class="container-editorial">
+    <p class="eyebrow" data-reveal>Produção musical</p>
+    <h2 class="mt-3 max-w-2xl font-display text-[clamp(2.25rem,6vw,4rem)] uppercase leading-[0.95] text-paper" data-reveal>
+      Da ideia à música pronta
+    </h2>
+    <p class="mt-5 max-w-xl text-mist" data-reveal>
+      Produção e acompanhamento para transformar uma ideia musical em um projeto pronto para seguir
+      adiante.
+    </p>
+  </div>
+
+  <div class="mt-16 lg:overflow-hidden" data-services-pin>
+    <div
+      class="container-editorial flex flex-col gap-0 lg:w-max lg:flex-row lg:gap-0"
+      data-services-track
+    >
+      {
+        SERVICES.map((service, i) => (
+          <div class="flex items-center gap-6 border-t border-mist/15 py-6 lg:h-[46vh] lg:w-[19rem] lg:flex-col lg:items-start lg:justify-between lg:border-t-0 lg:border-l lg:border-r-0 lg:py-10 lg:pl-8 lg:first:border-l-0">
+            <span class="font-display text-lg text-signal-pink lg:text-xl">{String(i + 1).padStart(2, '0')}</span>
+            <span class="flex-1 font-display text-2xl uppercase leading-[1.05] text-paper lg:mt-4 lg:text-3xl">
+              {service}
+            </span>
+            <SoundWave seed={`service-${i}`} variant="bars" bars={14} class="hidden h-10 w-full lg:flex" />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="container-editorial mt-16 flex flex-col items-start gap-4" data-reveal>
+    <p class="max-w-md text-sm text-mist">
+      Sem prazos ou pacotes fechados prometidos aqui — cada projeto é conversado com a EM Music
+      antes de começar.
+    </p>
+    <a href={WHATSAPP.projeto} target="_blank" rel="noopener noreferrer" class="btn-primary" data-magnetic>
+      Falar sobre meu projeto<span class="sr-only"> (abre no WhatsApp em nova aba)</span>
+    </a>
+  </div>
+</section>

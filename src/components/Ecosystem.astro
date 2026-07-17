@@ -1,0 +1,94 @@
+---
+import { BRANDS } from '../data/site';
+import { publicFileExists } from '../utils/assets';
+
+const brandsWithLogo = BRANDS.map((brand) => ({
+  ...brand,
+  hasLogo: publicFileExists(brand.logoPath.replace(/^\//, '')),
+}));
+---
+
+<section id="ecossistema" class="relative overflow-hidden bg-void-raised py-24 sm:py-32">
+  <div class="container-editorial">
+    <p class="eyebrow" data-reveal>O ecossistema</p>
+    <h2 class="mt-3 max-w-3xl font-display text-[clamp(2.25rem,6vw,4rem)] uppercase leading-[0.95] text-paper" data-reveal>
+      Um ecossistema conectado à música
+    </h2>
+  </div>
+
+  <div class="container-editorial relative mt-16">
+    <!-- linha de conexão entre as marcas — decorativa, só no desktop -->
+    <div class="pointer-events-none absolute inset-x-0 top-[3.25rem] hidden h-px bg-gradient-to-r from-signal-purple/0 via-signal-magenta/40 to-signal-pink/0 lg:block" aria-hidden="true">
+      <div class="ecosystem-pulse absolute top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-signal-pink shadow-[0_0_12px_2px_rgba(239,61,154,0.7)]"></div>
+    </div>
+
+    <div class="grid gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        brandsWithLogo.map((brand) => (
+          <div class="relative flex flex-col" data-reveal>
+            <div class="flex h-14 items-center">
+              {brand.hasLogo ? (
+                <img src={brand.logoPath} alt={brand.name} class="h-10 w-auto max-w-[9rem] object-contain object-left" />
+              ) : (
+                <span class="eyebrow rounded-sm border border-mist/30 px-3 py-2 !text-paper/70">
+                  {brand.name} <span class="text-mist">· placeholder</span>
+                </span>
+              )}
+            </div>
+            <p class="mt-4 text-sm text-mist">{brand.description}</p>
+
+            {brand.actions.length > 0 ? (
+              <ul class="mt-5 flex flex-col gap-2">
+                {brand.actions.map((action) => (
+                  <li>
+                    <a
+                      href={action.href}
+                      target={action.external ? '_blank' : undefined}
+                      rel={action.external ? 'noopener noreferrer' : undefined}
+                      class="group inline-flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wide text-paper/80 transition-colors hover:text-signal-pink"
+                    >
+                      {action.label}
+                      {action.external && <span class="sr-only"> (abre em nova aba)</span>}
+                      <span aria-hidden="true" class="transition-transform group-hover:translate-x-1">→</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p class="mt-5 text-xs uppercase tracking-widest2 text-mist/50">Sem link público confirmado</p>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes ecosystem-pulse-move {
+    0% {
+      left: 0%;
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      left: 100%;
+      opacity: 0;
+    }
+  }
+  .ecosystem-pulse {
+    animation: ecosystem-pulse-move 5s ease-in-out infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ecosystem-pulse {
+      animation: none;
+      left: 50%;
+      opacity: 0.6;
+    }
+  }
+</style>

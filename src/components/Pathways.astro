@@ -1,0 +1,55 @@
+---
+import { PATHWAYS } from '../data/site';
+---
+
+<section id="producao" class="relative py-24 sm:py-32">
+  <div class="container-editorial">
+    <p class="eyebrow" data-reveal>Comece por aqui</p>
+    <h2 class="mt-3 max-w-3xl font-display text-[clamp(2.25rem,6vw,4rem)] uppercase leading-[0.95] text-paper" data-reveal>
+      O que você quer fazer?
+    </h2>
+  </div>
+
+  <div class="container-editorial mt-14 pathways-list">
+    {
+      PATHWAYS.map((path) => (
+        <a
+          href={path.href}
+          target={path.external ? '_blank' : undefined}
+          rel={path.external ? 'noopener noreferrer' : undefined}
+          class="pathway-item group relative flex flex-col gap-4 border-b border-mist/15 py-9 transition-[opacity] duration-500 first:border-t sm:flex-row sm:items-center sm:gap-10"
+          data-reveal
+        >
+          <span
+            class="font-display text-[clamp(3rem,8vw,5.5rem)] leading-none text-transparent [-webkit-text-stroke:1px_#A6A6A6] transition-colors duration-500 group-hover:[-webkit-text-stroke:1px_#EF3D9A] sm:w-40 sm:shrink-0"
+            aria-hidden="true"
+          >
+            {path.number}
+          </span>
+
+          <div class="flex-1">
+            <p class="eyebrow">{path.eyebrow}</p>
+            <h3 class="mt-2 font-display text-[clamp(1.5rem,3.4vw,2.5rem)] uppercase leading-[1.02] text-paper">
+              {path.title}
+            </h3>
+            <p class="mt-3 max-w-xl text-sm text-mist sm:text-base">{path.body}</p>
+          </div>
+
+          <span class="btn-outline shrink-0 transition-colors duration-300 group-hover:border-signal-pink group-hover:text-signal-pink sm:ml-auto">
+            {path.cta}
+            {path.external && <span class="sr-only"> (abre em nova aba)</span>}
+            <span aria-hidden="true" class="ml-1 transition-transform duration-300 group-hover:translate-x-1">→</span>
+          </span>
+        </a>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  @supports selector(:has(a)) {
+    .pathways-list:has(.pathway-item:hover) .pathway-item:not(:hover) {
+      opacity: 0.4;
+    }
+  }
+</style>

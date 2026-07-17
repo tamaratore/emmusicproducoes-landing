@@ -1,0 +1,76 @@
+---
+import { NAV_ITEMS, WHATSAPP } from '../data/site';
+import { publicFileExists } from '../utils/assets';
+import MobileMenu from './MobileMenu.astro';
+
+const logoExists = publicFileExists('images/brands/em-music.png');
+---
+
+<header
+  id="site-header"
+  class="fixed inset-x-0 top-0 z-header transition-colors duration-500"
+  data-header
+>
+  <div class="container-editorial flex h-[--header-h] items-center justify-between" style="--header-h: 4.5rem;">
+    <a href="#topo" class="flex items-center gap-2 shrink-0" aria-label="EM Music Produções — ir para o início">
+      {
+        logoExists ? (
+          <img
+            src="/images/brands/em-music.png"
+            alt="EM Music Produções"
+            class="h-9 w-auto sm:h-10"
+            width="240"
+            height="144"
+          />
+        ) : (
+          <span class="font-display text-xl tracking-wide text-paper">
+            EM <span class="text-gradient-signal">MUSIC</span>
+            <span class="ml-1 align-top text-[0.5rem] uppercase tracking-widest2 text-mist">placeholder</span>
+          </span>
+        )
+      }
+    </a>
+
+    <nav aria-label="Navegação principal" class="hidden lg:block">
+      <ul class="flex items-center gap-8">
+        {
+          NAV_ITEMS.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="text-sm font-semibold uppercase tracking-[0.08em] text-paper/80 transition-colors hover:text-paper"
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <a
+        href={WHATSAPP.geral}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary hidden sm:inline-flex"
+      >
+        Falar no WhatsApp
+      </a>
+      <button
+        type="button"
+        id="menu-toggle"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        class="inline-flex h-11 w-11 flex-col items-center justify-center gap-[5px] lg:hidden"
+        aria-label="Abrir menu"
+      >
+        <span class="block h-[2px] w-6 bg-paper transition-transform" data-menu-bar="1"></span>
+        <span class="block h-[2px] w-6 bg-paper transition-opacity" data-menu-bar="2"></span>
+        <span class="block h-[2px] w-6 bg-paper transition-transform" data-menu-bar="3"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<MobileMenu />

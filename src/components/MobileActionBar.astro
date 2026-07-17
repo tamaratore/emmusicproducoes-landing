@@ -1,0 +1,26 @@
+---
+import { MOBILE_ACTIONS } from '../data/site';
+---
+
+<nav
+  aria-label="Ações rápidas"
+  class="safe-bottom fixed inset-x-0 bottom-0 z-actionbar border-t border-mist/15 bg-void/95 backdrop-blur-md lg:hidden"
+>
+  <ul class="grid grid-cols-3">
+    {
+      MOBILE_ACTIONS.map((action) => (
+        <li>
+          <a
+            href={action.href}
+            target={action.external ? '_blank' : undefined}
+            rel={action.external ? 'noopener noreferrer' : undefined}
+            class="flex min-h-[3.25rem] flex-col items-center justify-center gap-0.5 py-2 text-center text-[0.7rem] font-bold uppercase tracking-wide text-paper/85 active:text-signal-pink"
+          >
+            {action.label}
+            {action.external && <span class="sr-only"> (abre em nova aba)</span>}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>
