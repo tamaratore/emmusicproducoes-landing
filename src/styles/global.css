@@ -52,10 +52,10 @@
   }
 }
 
-/* brilho de borda com a cor da logo (roxo->rosa) ao passar o mouse nos cards */
+/* brilho de borda com a cor da logo (roxo->rosa) ao passar o mouse nos cards —
+   só cor, sem mover/escalar nada (nunca usar tração/scale no hover aqui) */
 .glow-card {
   position: relative;
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .glow-card::before {
   content: '';
@@ -70,9 +70,6 @@
   opacity: 0;
   transition: opacity 0.35s ease;
   pointer-events: none;
-}
-.glow-card:hover {
-  transform: translateY(-3px) scale(1.03);
 }
 .glow-card:hover::before {
   opacity: 1;
