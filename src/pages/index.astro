@@ -29,10 +29,44 @@ const paths = [
   },
   {
     title: 'Consultoria com o Eder',
-    body: 'Travou numa mixagem ou não sabe por onde começar o projeto? Fala direto com ele.',
+    body: 'Travou numa mixagem ou não sabe por onde começar? Fala direto com ele.',
     cta: 'Chamar no WhatsApp',
     href: WHATSAPP_URL,
     accent: 'gospel',
+  },
+];
+
+// vídeos reais dos 3 canais oficiais (confirmados 17/07) — nunca thumbnail de banco
+const videos = [
+  {
+    title: 'Adriano Lima — A Casa É Nossa',
+    thumb: 'https://i.ytimg.com/vi/sBPhjQT0CIw/maxresdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=sBPhjQT0CIw',
+  },
+  {
+    title: 'Desperta-me — Eder Machado feat. Júlia Fernandes',
+    thumb: 'https://i.ytimg.com/vi/t42Vel5o7f8/maxresdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=t42Vel5o7f8',
+  },
+  {
+    title: 'Rafaela — Adriano Lima',
+    thumb: 'https://i.ytimg.com/vi/xNcooYAr_r0/maxresdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=xNcooYAr_r0',
+  },
+  {
+    title: 'Yahweh — Júlia Fernandes',
+    thumb: 'https://i.ytimg.com/vi/Gbb0YlkDSLk/maxresdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=Gbb0YlkDSLk',
+  },
+  {
+    title: 'CD Sky Love ao vivo em Teresina',
+    thumb: 'https://i.ytimg.com/vi/dUQutym_CfM/maxresdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=dUQutym_CfM',
+  },
+  {
+    title: 'Como lançar pads pelo celular (app grátis)',
+    thumb: 'https://i.ytimg.com/vi/Cx4iqoDWMLs/maxresdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=Cx4iqoDWMLs',
   },
 ];
 ---
@@ -109,6 +143,41 @@ const paths = [
     </section>
 
     <section id="prod-eder" class="sr-only" aria-hidden="true"></section>
+
+    <!-- CLIPES REAIS -->
+    <section class="py-14">
+      <div class="mx-auto max-w-4xl px-6">
+        <h2 class="font-display text-3xl text-paper">Clipes e produções reais</h2>
+        <p class="mt-2 text-sm text-paper/60">Direto dos nossos canais, sem imagem de banco.</p>
+      </div>
+      <div class="mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {videos.map((v) => (
+          <a
+            href={v.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group relative block w-64 shrink-0 snap-start overflow-hidden rounded-2xl border border-ink-line bg-ink-raised sm:w-72"
+          >
+            <span class="relative block aspect-video w-full overflow-hidden">
+              <img
+                src={v.thumb}
+                alt={v.title}
+                loading="lazy"
+                class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/0 to-ink/0" />
+              <span class="absolute inset-0 flex items-center justify-center">
+                <span class="flex h-11 w-11 items-center justify-center rounded-full bg-ink/70 ring-1 ring-paper/40">
+                  <svg viewBox="0 0 24 24" class="ml-0.5 h-4 w-4 fill-paper"><path d="M8 5v14l11-7z" /></svg>
+                </span>
+              </span>
+            </span>
+            <p class="p-4 text-sm font-semibold text-paper">{v.title}</p>
+            <span class="sr-only"> (abre no YouTube em nova aba)</span>
+          </a>
+        ))}
+      </div>
+    </section>
 
     <!-- RODAPÉ -->
     <footer class="border-t border-ink-line px-6 py-10">
