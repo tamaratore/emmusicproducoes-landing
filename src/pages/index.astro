@@ -36,7 +36,7 @@ const paths = [
   },
 ];
 
-// vídeos reais dos 3 canais oficiais (confirmados 17/07) — nunca thumbnail de banco
+// vídeos reais dos 2 canais de produção (confirmados 17/07) — nunca thumbnail de banco
 const videos = [
   {
     title: 'Adriano Lima — A Casa É Nossa',
@@ -44,14 +44,9 @@ const videos = [
     url: 'https://www.youtube.com/watch?v=sBPhjQT0CIw',
   },
   {
-    title: 'Desperta-me — Eder Machado feat. Júlia Fernandes',
-    thumb: 'https://i.ytimg.com/vi/t42Vel5o7f8/maxresdefault.jpg',
-    url: 'https://www.youtube.com/watch?v=t42Vel5o7f8',
-  },
-  {
-    title: 'Rafaela — Adriano Lima',
-    thumb: 'https://i.ytimg.com/vi/xNcooYAr_r0/maxresdefault.jpg',
-    url: 'https://www.youtube.com/watch?v=xNcooYAr_r0',
+    title: 'CD Sky Love ao vivo em Teresina',
+    thumb: 'https://i.ytimg.com/vi/dUQutym_CfM/maxresdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=dUQutym_CfM',
   },
   {
     title: 'Yahweh — Júlia Fernandes',
@@ -59,14 +54,29 @@ const videos = [
     url: 'https://www.youtube.com/watch?v=Gbb0YlkDSLk',
   },
   {
-    title: 'CD Sky Love ao vivo em Teresina',
-    thumb: 'https://i.ytimg.com/vi/dUQutym_CfM/maxresdefault.jpg',
-    url: 'https://www.youtube.com/watch?v=dUQutym_CfM',
+    title: 'Rafaela — Adriano Lima',
+    thumb: 'https://i.ytimg.com/vi/xNcooYAr_r0/maxresdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=xNcooYAr_r0',
   },
   {
-    title: 'Como lançar pads pelo celular (app grátis)',
-    thumb: 'https://i.ytimg.com/vi/Cx4iqoDWMLs/maxresdefault.jpg',
-    url: 'https://www.youtube.com/watch?v=Cx4iqoDWMLs',
+    title: 'Adriano Lima — Estou Perdido',
+    thumb: 'https://i.ytimg.com/vi/aM3a5Oue0QE/maxresdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=aM3a5Oue0QE',
+  },
+  {
+    title: 'Desperta-me — Eder Machado feat. Júlia Fernandes',
+    thumb: 'https://i.ytimg.com/vi/t42Vel5o7f8/maxresdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=t42Vel5o7f8',
+  },
+  {
+    title: 'Os Xonados do Forró em Baixa Grande',
+    thumb: 'https://i.ytimg.com/vi/-e279JoZv7Y/maxresdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=-e279JoZv7Y',
+  },
+  {
+    title: 'Confia — Eder Machado',
+    thumb: 'https://i.ytimg.com/vi/UBXXoSdAzKo/maxresdefault.jpg',
+    url: 'https://www.youtube.com/watch?v=UBXXoSdAzKo',
   },
 ];
 ---
@@ -83,7 +93,25 @@ const videos = [
       >
       </div>
       <div class="relative mx-auto max-w-xl text-center">
-        <p class="font-body text-sm font-semibold uppercase tracking-[0.2em] text-signal">
+        <img
+          src="/images/em-music-logo.png"
+          alt="EM Music Produções"
+          class="mx-auto h-14 w-auto sm:h-16"
+          width="1400"
+          height="586"
+        />
+
+        <div class="mx-auto mt-6 flex h-10 items-end justify-center gap-1" aria-hidden="true">
+          <span class="eq-bar w-1.5 rounded-full bg-gradient-to-t from-signal to-gospel"></span>
+          <span class="eq-bar w-1.5 rounded-full bg-gradient-to-t from-signal to-gospel"></span>
+          <span class="eq-bar w-1.5 rounded-full bg-gradient-to-t from-signal to-gospel"></span>
+          <span class="eq-bar w-1.5 rounded-full bg-gradient-to-t from-signal to-gospel"></span>
+          <span class="eq-bar w-1.5 rounded-full bg-gradient-to-t from-signal to-gospel"></span>
+          <span class="eq-bar w-1.5 rounded-full bg-gradient-to-t from-signal to-gospel"></span>
+          <span class="eq-bar w-1.5 rounded-full bg-gradient-to-t from-signal to-gospel"></span>
+        </div>
+
+        <p class="mt-6 font-body text-sm font-semibold uppercase tracking-[0.2em] text-signal">
           Chegou pelo adesivo do carro?
         </p>
         <h1 class="balance mt-4 font-display text-5xl leading-[0.95] text-paper sm:text-6xl">
@@ -149,33 +177,54 @@ const videos = [
       <div class="mx-auto max-w-4xl px-6">
         <h2 class="font-display text-3xl text-paper">Clipes e produções reais</h2>
         <p class="mt-2 text-sm text-paper/60">Direto dos nossos canais, sem imagem de banco.</p>
-      </div>
-      <div class="mt-8 flex snap-x snap-mandatory gap-4 overflow-x-auto px-6 pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-        {videos.map((v) => (
-          <a
-            href={v.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="group relative block w-64 shrink-0 snap-start overflow-hidden rounded-2xl border border-ink-line bg-ink-raised sm:w-72"
-          >
-            <span class="relative block aspect-video w-full overflow-hidden">
-              <img
-                src={v.thumb}
-                alt={v.title}
-                loading="lazy"
-                class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-              <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/0 to-ink/0" />
-              <span class="absolute inset-0 flex items-center justify-center">
-                <span class="flex h-11 w-11 items-center justify-center rounded-full bg-ink/70 ring-1 ring-paper/40">
-                  <svg viewBox="0 0 24 24" class="ml-0.5 h-4 w-4 fill-paper"><path d="M8 5v14l11-7z" /></svg>
+
+        <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {videos.map((v) => (
+            <a
+              href={v.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group relative block overflow-hidden rounded-2xl border border-ink-line bg-ink-raised"
+            >
+              <span class="relative block aspect-video w-full overflow-hidden">
+                <img
+                  src={v.thumb}
+                  alt={v.title}
+                  loading="lazy"
+                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+                <span class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/0 to-ink/0" />
+                <span class="absolute inset-0 flex items-center justify-center">
+                  <span class="flex h-11 w-11 items-center justify-center rounded-full bg-ink/70 ring-1 ring-paper/40">
+                    <svg viewBox="0 0 24 24" class="ml-0.5 h-4 w-4 fill-paper"><path d="M8 5v14l11-7z" /></svg>
+                  </span>
                 </span>
               </span>
-            </span>
-            <p class="p-4 text-sm font-semibold text-paper">{v.title}</p>
-            <span class="sr-only"> (abre no YouTube em nova aba)</span>
+              <p class="p-4 text-sm font-semibold text-paper">{v.title}</p>
+              <span class="sr-only"> (abre no YouTube em nova aba)</span>
+            </a>
+          ))}
+        </div>
+
+        <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3">
+          <span class="text-sm text-paper/50">Ver mais:</span>
+          <a
+            href="https://www.youtube.com/@emproducooesofficial6670"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-semibold text-signal hover:text-paper"
+          >
+            Ir para EM Music Produções<span class="sr-only"> (abre no YouTube em nova aba)</span>
           </a>
-        ))}
+          <a
+            href="https://www.youtube.com/@PRODERMACHADO"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-sm font-semibold text-gospel hover:text-paper"
+          >
+            Ir para Prod. Eder Machado<span class="sr-only"> (abre no YouTube em nova aba)</span>
+          </a>
+        </div>
       </div>
     </section>
 
