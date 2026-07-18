@@ -1,0 +1,42 @@
+---
+interface Brand {
+  nome: string;
+  desc: string;
+  href: string;
+}
+
+interface Props {
+  atual: string;
+}
+
+const { atual } = Astro.props;
+
+const REDE: Brand[] = [
+  { nome: 'Rede Loops Brasil', desc: 'Hub da rede: todas as marcas num lugar só', href: 'https://loopsbrasil.com.br' },
+  { nome: 'ED Tutoriais', desc: 'Cursos de produção musical', href: 'https://edtutoriais.com.br' },
+  { nome: 'Samples Brasil', desc: 'Loops, waves e pacotes Kontakt prontos', href: 'https://samplesbrasil.com' },
+  { nome: 'EM Music Produções', desc: 'Grava, mixa e masteriza com o Eder Machado', href: 'https://emmusicproducoes.com.br' },
+  { nome: 'Eder Machado', desc: 'Música e clipes do Eder Machado', href: 'https://eder.edtmusic.com.br' },
+];
+---
+
+<div class="w-full border-t border-ink-line pt-8">
+  <p class="text-center text-xs font-semibold uppercase tracking-[0.15em] text-paper/40">A rede</p>
+  <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+    {REDE.map((b) => (
+      b.nome === atual ? (
+        <div class="rounded-xl border border-ink-line bg-ink-raised p-3 text-center">
+          <p class="text-xs font-semibold text-paper">
+            {b.nome} <span class="text-paper/40">(você está aqui)</span>
+          </p>
+          <p class="mt-1 text-[11px] leading-snug text-paper/50">{b.desc}</p>
+        </div>
+      ) : (
+        <a href={b.href} class="rounded-xl border border-ink-line p-3 text-center transition hover:border-paper/30">
+          <p class="text-xs font-semibold text-paper">{b.nome}</p>
+          <p class="mt-1 text-[11px] leading-snug text-paper/50">{b.desc}</p>
+        </a>
+      )
+    ))}
+  </div>
+</div>
