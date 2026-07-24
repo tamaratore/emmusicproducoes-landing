@@ -22,15 +22,18 @@ const REDE: Brand[] = [
 ---
 
 <header>
-  <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-2.5 sm:px-6">
-    <a href="https://rede.loopsbrasil.com.br" class="flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-paper/50 transition hover:text-paper/80">
-      <img src="/images/loopsbrasil-icon.png" alt="" class="h-4 w-auto shrink-0" width="303" height="173" />
-      <span class="hidden sm:inline">Rede Loops Brasil</span>
+  <div class="flex items-center justify-between px-4 py-2.5 sm:px-6">
+    <a href="https://rede.loopsbrasil.com.br" class="flex items-center gap-2 text-paper/60 transition hover:text-paper/90">
+      <img src="/images/loopsbrasil-icon.png" alt="" class="h-6 w-auto shrink-0" width="303" height="173" />
+      <span class="hidden flex-col text-[10px] font-semibold uppercase leading-[1.15] tracking-[0.2em] sm:flex">
+        <span>Rede</span>
+        <span>Loops Brasil</span>
+      </span>
     </a>
     <nav class="flex items-center gap-4">
-      <a href="https://rede.loopsbrasil.com.br/nossa-historia" class="hidden text-xs font-semibold text-paper/70 transition hover:text-paper sm:inline">
-        Sobre
-      </a>
+      <span class="hidden text-xs font-semibold uppercase tracking-[0.15em] text-paper/70 sm:inline">
+        {atual}
+      </span>
       <details class="rede-switcher relative">
         <summary class="flex cursor-pointer list-none items-center gap-1.5 rounded-full border border-ink-line px-3 py-1.5 text-xs font-semibold text-paper/80 transition hover:border-paper/40 hover:text-paper">
           Conhecer a rede
