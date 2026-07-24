@@ -61,21 +61,21 @@
    fundo solido, so um degrade escuro que desaparece conforme desce, deixando o
    proprio fundo escuro da pagina (bg-ink) assumir depois que passa do hero */
 .nav-overlay-gradient {
-  /* Tore pediu (24/07): fundo do menu sempre preto solido, nunca
-     transparente/degrade - mesmo com video no hero atras. Mesma cor das
-     abas laterais (#100614), igual o resto da rede desde o inicio. */
-  background: #100614;
-  /* sem isso o menu "some" visualmente no topo: o degrade escuro do video do
-     hero fica quase da mesma cor/luminancia do #100614 e nao da pra ver onde
-     o menu termina e o hero comeca - so ficava perceptivel depois de rolar,
-     quando o fundo da secao seguinte contrasta. Linha fina + sombra da a
-     separacao mesmo com os dois bem escuros. */
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.4);
+  /* Tore esclareceu (24/07): a barra de cima (Rede Loops Brasil) fica solida
+     sempre (ver .rede-switcher-solid no header), mas a barra do SiteNav
+     (logo EM Music + Inicio/O que fazemos/Lancamentos/Clipe) fica
+     transparente sobre o video do hero, so vira solida depois de rolar -
+     desfaz o "sempre solido" de antes, que tinha juntado as duas barras. */
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.45) 65%, rgba(0, 0, 0, 0) 100%);
+  padding-bottom: 2.5rem;
+  margin-bottom: -2.5rem;
+  transition: background 0.3s ease;
 }
 .nav-overlay-gradient.nav-solid {
   background: #100614;
   padding-bottom: 0;
   margin-bottom: 0;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
 /* video real do hero embutido do YouTube, escalado tipo "object-fit: cover" pra
