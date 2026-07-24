@@ -65,6 +65,12 @@
      transparente/degrade - mesmo com video no hero atras. Mesma cor das
      abas laterais (#100614), igual o resto da rede desde o inicio. */
   background: #100614;
+  /* sem isso o menu "some" visualmente no topo: o degrade escuro do video do
+     hero fica quase da mesma cor/luminancia do #100614 e nao da pra ver onde
+     o menu termina e o hero comeca - so ficava perceptivel depois de rolar,
+     quando o fundo da secao seguinte contrasta. Linha fina + sombra da a
+     separacao mesmo com os dois bem escuros. */
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 .nav-overlay-gradient.nav-solid {
   background: #100614;
