@@ -1,0 +1,83 @@
+---
+interface Props {
+  whatsappUrl: string;
+}
+const { whatsappUrl } = Astro.props;
+
+const LINKS = [
+  { href: '#topo', label: 'Início', section: 'INÍCIO' },
+  { href: '#em-music', label: 'O que fazemos', section: 'O QUE FAZEMOS' },
+  { href: '#lancamentos', label: 'Lançamentos', section: 'LANÇAMENTOS' },
+  { href: '#videos', label: 'Vídeos', section: 'VÍDEOS' },
+];
+---
+<div id="site-nav" class="sticky top-0 z-40 border-b border-ink-line/70 bg-ink/90 backdrop-blur">
+  <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3 sm:px-6">
+    <a href="#topo" class="flex shrink-0 items-center">
+      <img
+        src="/images/em-music-logo.png"
+        alt="EM Music Produções / Prod. Eder Machado"
+        class="h-8 w-auto sm:h-9"
+        width="1400"
+        height="586"
+      />
+    </a>
+
+    <nav class="hidden items-center gap-6 md:flex">
+      {LINKS.map((l) => (
+        <a
+          href={l.href}
+          data-nav-link
+          data-section={l.section}
+          class="text-xs font-semibold uppercase tracking-[0.12em] text-paper/60 transition hover:text-paper"
+        >
+          {l.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="flex items-center gap-4">
+      <span
+        id="nav-current-section"
+        class="hidden text-right text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-pink lg:block"
+      >
+        Início
+      </span>
+      <a
+        href={whatsappUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-full bg-gradient-to-r from-brand-purple to-brand-pink px-4 py-2 text-xs font-semibold uppercase tracking-wide text-paper"
+      >
+        Falar com o Eder
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  const sections = Array.from(document.querySelectorAll<HTMLElement>('[data-nav-link]'))
+    .map((link) => {
+      const id = link.getAttribute('href')?.replace('#', '');
+      const el = id ? document.getElementById(id) : null;
+      return el ? { el, label: link.getAttribute('data-section') || '' } : null;
+    })
+    .filter((s): s is { el: HTMLElement; label: string } => s !== null);
+
+  const indicator = document.getElementById('nav-current-section');
+
+  if (indicator && sections.length) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const match = sections.find((s) => s.el === entry.target);
+            if (match) indicator.textContent = match.label;
+          }
+        });
+      },
+      { rootMargin: '-45% 0px -50% 0px', threshold: 0 },
+    );
+    sections.forEach((s) => io.observe(s.el));
+  }
+</script>

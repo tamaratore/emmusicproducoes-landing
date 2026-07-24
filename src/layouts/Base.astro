@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import RedeSwitcher from '../components/RedeSwitcher.astro';
+import Preloader from '../components/Preloader.astro';
 
 interface Props {
   title: string;
@@ -28,6 +29,7 @@ const { title, description, redeAtual } = Astro.props;
     />
   </head>
   <body class="bg-ink text-paper font-body antialiased">
+    <Preloader />
     {redeAtual && <RedeSwitcher atual={redeAtual} />}
     <slot />
   </body>

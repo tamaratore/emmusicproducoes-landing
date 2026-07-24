@@ -1,0 +1,90 @@
+<!-- mesmo padrao do preloader do edtutoriais.com.br: fundo preto, logo, 7 barras de
+     equalizador, esconde no window.load ou em 3s no maximo (o que vier primeiro) -->
+<div id="el-preloader">
+  <img src="/images/em-music-logo.png" alt="" width="1400" height="586" />
+  <div id="el-preloader-eq" aria-hidden="true">
+    <span class="eq-bar"></span>
+    <span class="eq-bar"></span>
+    <span class="eq-bar"></span>
+    <span class="eq-bar"></span>
+    <span class="eq-bar"></span>
+    <span class="eq-bar"></span>
+    <span class="eq-bar"></span>
+  </div>
+</div>
+
+<style>
+  #el-preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #0a0a0a;
+    transition: opacity 0.4s ease;
+  }
+  #el-preloader img {
+    height: 44px;
+    width: auto;
+    animation: el-pulse 1.6s ease-in-out infinite;
+  }
+  #el-preloader-eq {
+    margin-top: 18px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 4px;
+    height: 32px;
+  }
+  #el-preloader-eq .eq-bar {
+    width: 5px;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #ef3d9a, #7429a8);
+    height: 40%;
+    transform-origin: bottom;
+    animation: el-eq-bounce 1.1s ease-in-out infinite;
+  }
+  #el-preloader-eq .eq-bar:nth-child(1) { animation-delay: -1.1s; height: 55%; }
+  #el-preloader-eq .eq-bar:nth-child(2) { animation-delay: -0.7s; height: 30%; }
+  #el-preloader-eq .eq-bar:nth-child(3) { animation-delay: -0.9s; height: 70%; }
+  #el-preloader-eq .eq-bar:nth-child(4) { animation-delay: -0.3s; height: 100%; }
+  #el-preloader-eq .eq-bar:nth-child(5) { animation-delay: -0.5s; height: 45%; }
+  #el-preloader-eq .eq-bar:nth-child(6) { animation-delay: -1s; height: 65%; }
+  #el-preloader-eq .eq-bar:nth-child(7) { animation-delay: -0.2s; height: 35%; }
+  @keyframes el-eq-bounce {
+    0%, 100% { transform: scaleY(0.4); }
+    50% { transform: scaleY(1); }
+  }
+  @keyframes el-pulse {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #el-preloader-eq .eq-bar { animation: none; transform: scaleY(0.7); }
+    #el-preloader img { animation: none; }
+  }
+  #el-preloader.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  (function () {
+    var el = document.getElementById('el-preloader');
+    if (!el) return;
+    var hidden = false;
+    function hide() {
+      if (hidden) return;
+      hidden = true;
+      el.classList.add('is-hidden');
+      setTimeout(function () {
+        el.remove();
+      }, 450);
+    }
+    window.addEventListener('load', hide);
+    setTimeout(hide, 3000);
+  })();
+</script>

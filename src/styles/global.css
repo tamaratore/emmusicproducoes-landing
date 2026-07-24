@@ -52,6 +52,48 @@
   }
 }
 
+/* onda gigante de fundo do hero (estilo Kronoxx): substitui/acompanha o video real,
+   sempre leve (CSS puro), fica por baixo do video quando ele existir */
+.hero-wave-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(2px, 0.6vw, 6px);
+  padding: 0 4vw;
+}
+.hero-wave-bg--dim {
+  opacity: 0.35;
+  mix-blend-mode: screen;
+}
+.hero-wave-bar {
+  flex: 1 1 0;
+  max-width: 14px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ef3d9a, #7429a8 60%, transparent);
+  transform-origin: bottom;
+  animation: hero-wave-bounce 2.6s ease-in-out infinite;
+}
+@keyframes hero-wave-bounce {
+  0%, 100% { transform: scaleY(0.55); opacity: 0.6; }
+  50% { transform: scaleY(1); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-wave-bar { animation: none; }
+}
+
+.scroll-hint {
+  animation: scroll-hint-bounce 1.8s ease-in-out infinite;
+}
+@keyframes scroll-hint-bounce {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50% { transform: translateY(6px); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-hint { animation: none; }
+}
+
 /* brilho de borda com a cor da logo (roxo->rosa) ao passar o mouse nos cards:
    só cor, sem mover/escalar nada (nunca usar tração/scale no hover aqui) */
 .glow-card {
