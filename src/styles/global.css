@@ -96,6 +96,11 @@
   pointer-events: none;
   /* empurra pro preto de verdade em vez de so um véu cinza por cima */
   filter: brightness(0.7) contrast(1.1) saturate(1.05);
+  /* o atributo frameborder="0" no HTML nao tem efeito nos navegadores
+     modernos - sem isso o iframe mostra a moldura cinza padrao dele */
+  border: none;
+  outline: none;
+  display: block;
 }
 
 .scroll-hint {
