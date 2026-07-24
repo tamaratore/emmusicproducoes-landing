@@ -116,10 +116,15 @@
   border-radius: 6px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
+  /* sem isso, o translateY do hover + overflow-hidden + canto arredondado
+     pode revelar uma linha fina de serrilhado na borda (artefato de
+     repintura do navegador) */
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 .media-card:hover {
   box-shadow: 0 18px 32px -12px rgba(0, 0, 0, 0.55);
-  transform: translateY(-3px);
+  transform: translateY(-3px) translateZ(0);
 }
 @media (prefers-reduced-motion: reduce) {
   .media-card:hover {
@@ -127,17 +132,20 @@
   }
 }
 
-/* brilho de borda com a cor da logo (roxo->rosa) ao passar o mouse nos cards:
-   só cor, sem mover/escalar nada (nunca usar tração/scale no hover aqui) */
+/* cards sem imagem (fork EM Music/Eder, servicos): sem borda estatica (Tore
+   achava "incomodando"), so uma sombra leve parada + brilho tecnologico
+   (borda-luz + leve elevacao) que aparece no hover */
 .glow-card {
   position: relative;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
 }
 .glow-card::before {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  padding: 1.5px;
+  padding: 1px;
   background: linear-gradient(135deg, #7429a8, #cb287d, #ef3d9a);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -146,8 +154,17 @@
   transition: opacity 0.35s ease;
   pointer-events: none;
 }
+.glow-card:hover {
+  box-shadow: 0 10px 30px -8px rgba(239, 61, 154, 0.35), 0 6px 20px -8px rgba(116, 41, 168, 0.35);
+  transform: translateY(-2px);
+}
 .glow-card:hover::before {
   opacity: 1;
+}
+@media (prefers-reduced-motion: reduce) {
+  .glow-card:hover {
+    transform: none;
+  }
 }
 
 /* botão flutuante de WhatsApp, sempre visível, chamando atenção com pulso suave */
