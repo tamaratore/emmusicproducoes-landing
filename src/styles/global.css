@@ -6,6 +6,11 @@
   html {
     scroll-behavior: smooth;
   }
+  /* nav flutuante fixa (~100px) tampa o topo de qualquer secao ancorada -
+     sem isso o scroll pra #proximo/#em-music etc parece "pular demais" */
+  section[id] {
+    scroll-margin-top: 110px;
+  }
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
