@@ -22,10 +22,10 @@ export default {
         },
       },
       fontFamily: {
-        display: ['"Anton"', 'sans-serif'],
-        body: ['"Work Sans"', 'sans-serif'],
-        // usados so nas tabs verticais laterais e labels tipo nav, estilo
-        // sonaar.io/demos/?theme=Promote (referencia pedida pela Tore)
+        // tipografia copiada de sonaar.io/demos/?theme=Promote, a pedido da
+        // Tore: Poppins nos titulos, Lato no corpo, Abel nos labels do menu
+        display: ['"Poppins"', 'sans-serif'],
+        body: ['"Lato"', 'sans-serif'],
         label: ['"Poppins"', 'sans-serif'],
         accent: ['"Abel"', 'sans-serif'],
       },

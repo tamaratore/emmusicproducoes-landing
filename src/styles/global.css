@@ -52,6 +52,15 @@
   }
 }
 
+/* nav flutua por cima do video do hero (igual referencia Promote/Kronoxx) - sem
+   fundo solido, so um degrade escuro que desaparece conforme desce, deixando o
+   proprio fundo escuro da pagina (bg-ink) assumir depois que passa do hero */
+.nav-overlay-gradient {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.45) 65%, rgba(0, 0, 0, 0) 100%);
+  padding-bottom: 2.5rem;
+  margin-bottom: -2.5rem;
+}
+
 /* video real do hero embutido do YouTube, escalado tipo "object-fit: cover" pra
    cobrir a secao inteira independente da proporcao da tela (tecnica padrao pra
    video de fundo via iframe) - some assim que o arquivo proprio existir */
