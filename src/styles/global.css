@@ -70,7 +70,8 @@
    brigar com o conteudo normal das secoes (sem isso o menu ficava dificil
    de ler por cima de imagem/texto qualquer da pagina) */
 .nav-overlay-gradient.nav-solid {
-  background: #000;
+  /* mesma cor das abas laterais (#100614), pra combinar */
+  background: #100614;
   padding-bottom: 0;
   margin-bottom: 0;
 }
