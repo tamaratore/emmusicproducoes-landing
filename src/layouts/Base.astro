@@ -33,10 +33,24 @@ const { title, description, redeAtual } = Astro.props;
   </head>
   <body class="bg-black text-paper font-body antialiased">
     <Preloader />
-    <div class="nav-overlay-gradient fixed inset-x-0 top-0 z-50">
+    <div id="site-nav-wrap" class="nav-overlay-gradient fixed inset-x-0 top-0 z-50">
       {redeAtual && <RedeSwitcher atual={redeAtual} />}
       <slot name="nav" />
     </div>
     <slot />
+
+    <script>
+      // depois do hero, o degrade transparente vira fundo preto solido pra
+      // nao brigar com o conteudo das secoes normais (Tore reportou "atrapalhar
+      // a leitura do menu" quando o fundo continuava so transparente)
+      const navWrap = document.getElementById('site-nav-wrap');
+      if (navWrap) {
+        const onScroll = () => {
+          navWrap.classList.toggle('nav-solid', window.scrollY > 80);
+        };
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+      }
+    </script>
   </body>
 </html>
