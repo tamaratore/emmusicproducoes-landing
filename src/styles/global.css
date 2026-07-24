@@ -71,6 +71,8 @@
   min-width: 177.78vh; /* 16:9 */
   transform: translate(-50%, -50%);
   pointer-events: none;
+  /* empurra pro preto de verdade em vez de so um véu cinza por cima */
+  filter: brightness(0.7) contrast(1.1) saturate(1.05);
 }
 
 .scroll-hint {
