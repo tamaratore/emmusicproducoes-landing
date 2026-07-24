@@ -259,7 +259,7 @@ const videos = [
         <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/15 to-black"></div>
       </div>
 
-      <div class="relative mx-auto max-w-3xl text-center [text-shadow:0_2px_16px_rgba(0,0,0,0.65)]">
+      <div class="relative mx-auto max-w-3xl text-center [text-shadow:0_1px_3px_rgba(0,0,0,0.85),0_2px_10px_rgba(0,0,0,0.5)]">
         <p class="font-body text-sm font-semibold uppercase tracking-[0.3em] text-brand-pink">
           Chegou pelo adesivo do carro?
         </p>
@@ -276,7 +276,7 @@ const videos = [
           href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
-          class="mt-8 inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-brand-purple to-brand-pink px-8 py-4 font-accent text-lg font-bold uppercase tracking-wide text-paper"
+          class="mt-8 inline-flex items-center gap-2.5 rounded-full bg-gradient-to-r from-brand-purple to-brand-pink px-8 py-4 font-accent text-lg uppercase tracking-wide text-paper"
         >
           <svg viewBox="0 0 24 24" class="h-5 w-5 fill-paper"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.1 8.1 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.6.1-.7.8-.9 1-.3.2-.6 0a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5s.2-.3.4-.4a1.6 1.6 0 0 0 .2-.4.5.5 0 0 0 0-.4c0-.1-.6-1.5-.8-2s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c.6.3 1.1.4 1.5.5a3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.8-1.2 2.1 2.1 0 0 0 .1-1.2c-.1-.1-.2-.2-.5-.3Z"/></svg>
           Falar com o Eder agora
@@ -288,15 +288,15 @@ const videos = [
         </p>
 
         <div class="mx-auto mt-14 flex justify-center">
-          <span class="scroll-hint" aria-hidden="true">
+          <a href="#proximo" aria-label="Descer para a próxima seção" class="scroll-hint block">
             <svg viewBox="0 0 24 24" class="h-5 w-5 fill-white/70"><path d="M12 16.5 4.5 9l1.4-1.4L12 13.7l6.1-6.1L19.5 9z" /></svg>
-          </span>
+          </a>
         </div>
       </div>
     </section>
 
     <!-- FORK: os dois mundos -->
-    <section class="px-6 pb-4">
+    <section id="proximo" class="px-6 pb-4">
       <div class="mx-auto grid max-w-4xl gap-4 sm:grid-cols-2">
         <a
           href="#em-music"
@@ -529,7 +529,7 @@ const videos = [
     href={WHATSAPP_URL}
     target="_blank"
     rel="noopener noreferrer"
-    class="whatsapp-float fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3.5 font-accent text-base font-bold uppercase tracking-wide text-ink shadow-lg"
+    class="whatsapp-float fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-3.5 font-accent text-base uppercase tracking-wide text-ink shadow-lg"
   >
     <svg viewBox="0 0 24 24" class="h-5 w-5 fill-ink"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2Zm0 18.2a8.1 8.1 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.4-.7-1.7-.8s-.4-.1-.6.1-.7.8-.9 1-.3.2-.6 0a6.7 6.7 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.1-.2 0-.4.1-.5s.2-.3.4-.4a1.6 1.6 0 0 0 .2-.4.5.5 0 0 0 0-.4c0-.1-.6-1.5-.8-2s-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 2.9 2.9 0 0 0-.9 2.2 5.1 5.1 0 0 0 1.1 2.7 11.6 11.6 0 0 0 4.4 3.9c.6.3 1.1.4 1.5.5a3.6 3.6 0 0 0 1.6.1 2.7 2.7 0 0 0 1.8-1.2 2.1 2.1 0 0 0 .1-1.2c-.1-.1-.2-.2-.5-.3Z"/></svg>
     <span class="hidden sm:inline">Falar com o Eder</span>
