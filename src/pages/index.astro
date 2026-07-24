@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import Base from '../layouts/Base.astro';
 import SiteNav from '../components/SiteNav.astro';
+import SideTabs from '../components/SideTabs.astro';
 
 // vídeo real do hero: assim que Toré mandar o arquivo (arquivo próprio, mais leve
 // e sem marca do YouTube), salvar em public/videos/hero-bg.mp4 que ele entra no ar
@@ -225,6 +226,7 @@ const videos = [
   redeAtual="EM Music Produções"
 >
   <SiteNav whatsappUrl={WHATSAPP_URL} />
+  <SideTabs siteLabel="EM Music Produções" />
 
   <main>
     <!-- HERO estilo Kronoxx: fundo em movimento (video real quando existir, ou onda

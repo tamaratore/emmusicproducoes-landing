@@ -24,6 +24,10 @@ export default {
       fontFamily: {
         display: ['"Anton"', 'sans-serif'],
         body: ['"Work Sans"', 'sans-serif'],
+        // usados so nas tabs verticais laterais e labels tipo nav, estilo
+        // sonaar.io/demos/?theme=Promote (referencia pedida pela Tore)
+        label: ['"Poppins"', 'sans-serif'],
+        accent: ['"Abel"', 'sans-serif'],
       },
     },
   },

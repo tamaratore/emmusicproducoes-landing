@@ -1,0 +1,66 @@
+---
+// tabs verticais fixas nas bordas, igual sonaar.io/demos/?theme=Promote:
+// esquerda = rede (Rede Loops Brasil), direita = identidade do site atual.
+// position: fixed de propósito - é o efeito sutil que fica parado na tela
+// enquanto o resto rola por baixo, igual na referência.
+interface Props {
+  siteLabel: string;
+}
+const { siteLabel } = Astro.props;
+---
+<a
+  href="https://rede.loopsbrasil.com.br"
+  target="_blank"
+  rel="noopener noreferrer"
+  class="side-tab side-tab--left"
+  aria-label="Ir para o hub da Rede Loops Brasil"
+>
+  <span>+ + Rede Loops Brasil</span>
+</a>
+<div class="side-tab side-tab--right" aria-hidden="true">
+  <span>+ + {siteLabel}</span>
+</div>
+
+<style define:vars={{ siteLabel }}>
+  .side-tab {
+    position: fixed;
+    top: 50%;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 380px;
+    background: #100614;
+    transform: translateY(-50%);
+  }
+  .side-tab span {
+    display: inline-block;
+    font-family: '"Poppins"', sans-serif;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: rgba(247, 244, 238, 0.75);
+    white-space: nowrap;
+  }
+  .side-tab--left {
+    left: 0;
+  }
+  .side-tab--left span {
+    transform: rotate(-90deg);
+  }
+  .side-tab--right {
+    right: 0;
+  }
+  .side-tab--right span {
+    transform: rotate(90deg);
+  }
+  .side-tab--left:hover span,
+  .side-tab--right:hover span {
+    color: #f7f4ee;
+  }
+  @media (max-width: 1024px) {
+    .side-tab {
+      display: none;
+    }
+  }
+</style>
