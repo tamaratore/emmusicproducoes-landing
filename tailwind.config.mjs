@@ -28,6 +28,9 @@ export default {
         body: ['"Lato"', 'sans-serif'],
         label: ['"Poppins"', 'sans-serif'],
         accent: ['"Abel"', 'sans-serif'],
+        // so pro titulo gigante do hero - Tore achou o Abel fraco nesse tamanho,
+        // preferiu de volta a fonte original (mais parecida com o Kronoxx)
+        hero: ['"Anton"', 'sans-serif'],
       },
     },
   },
