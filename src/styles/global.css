@@ -61,16 +61,12 @@
    fundo solido, so um degrade escuro que desaparece conforme desce, deixando o
    proprio fundo escuro da pagina (bg-ink) assumir depois que passa do hero */
 .nav-overlay-gradient {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.45) 65%, rgba(0, 0, 0, 0) 100%);
-  padding-bottom: 2.5rem;
-  margin-bottom: -2.5rem;
-  transition: background 0.3s ease;
+  /* Tore pediu (24/07): fundo do menu sempre preto solido, nunca
+     transparente/degrade - mesmo com video no hero atras. Mesma cor das
+     abas laterais (#100614), igual o resto da rede desde o inicio. */
+  background: #100614;
 }
-/* depois de rolar a pagina alem do hero, vira fundo preto solido pra nao
-   brigar com o conteudo normal das secoes (sem isso o menu ficava dificil
-   de ler por cima de imagem/texto qualquer da pagina) */
 .nav-overlay-gradient.nav-solid {
-  /* mesma cor das abas laterais (#100614), pra combinar */
   background: #100614;
   padding-bottom: 0;
   margin-bottom: 0;
