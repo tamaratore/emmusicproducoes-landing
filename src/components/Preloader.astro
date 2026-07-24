@@ -84,7 +84,22 @@
         el.remove();
       }, 450);
     }
-    window.addEventListener('load', hide);
-    setTimeout(hide, 3000);
+    // o hero tem um video (proprio ou embed do YouTube) que demora um pouco mais
+    // pra comecar a tocar do que o "load" da pagina em si - por isso um piso
+    // minimo antes de poder esconder, alem do teto maximo de seguranca
+    var MIN_MS = 2200;
+    var MAX_MS = 5000;
+    var startedAt = Date.now();
+    function hideAfterMin() {
+      var elapsed = Date.now() - startedAt;
+      var remaining = MIN_MS - elapsed;
+      if (remaining > 0) {
+        setTimeout(hide, remaining);
+      } else {
+        hide();
+      }
+    }
+    window.addEventListener('load', hideAfterMin);
+    setTimeout(hide, MAX_MS);
   })();
 </script>
