@@ -3,9 +3,16 @@ import fs from 'node:fs';
 import Base from '../layouts/Base.astro';
 import SiteNav from '../components/SiteNav.astro';
 
-// vídeo real do hero: assim que Toré mandar o arquivo, salvar em
-// public/videos/hero-bg.mp4 que ele entra no ar sozinho, sem mexer em código
+// vídeo real do hero: assim que Toré mandar o arquivo (arquivo próprio, mais leve
+// e sem marca do YouTube), salvar em public/videos/hero-bg.mp4 que ele entra no ar
+// sozinho, sem mexer em código - ganha prioridade sobre o embed do YouTube abaixo
 const hasHeroVideo = fs.existsSync(new URL('../../public/videos/hero-bg.mp4', import.meta.url));
+
+// enquanto o arquivo próprio não vem, usa o vídeo real dela direto do YouTube
+// (confirmado: e do canal deles) via embed, começando no instante que ela marcou
+const HERO_YT_ID = 'omS3D-eyAW0';
+const HERO_YT_START = 131;
+const heroYoutubeEmbed = `https://www.youtube-nocookie.com/embed/${HERO_YT_ID}?autoplay=1&mute=1&loop=1&playlist=${HERO_YT_ID}&start=${HERO_YT_START}&controls=0&modestbranding=1&rel=0&showinfo=0&disablekb=1&playsinline=1&iv_load_policy=3`;
 
 const WHATSAPP_NUMBER = '556296655336'; // +55 62 9665-5336, confirmado por Toré
 const WHATSAPP_TEXT = encodeURIComponent('Vim pelo adesivo do carro! Quero falar sobre música.');
@@ -223,27 +230,30 @@ const videos = [
     <!-- HERO estilo Kronoxx: fundo em movimento (video real quando existir, ou onda
          animada leve como base/fallback), tipografia gigante em cima -->
     <section id="topo" class="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-6 py-24">
-      <div class="absolute inset-0" aria-hidden="true">
-        {hasHeroVideo && (
+      <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+        {hasHeroVideo ? (
           <video
-            class="h-full w-full object-cover opacity-50"
+            class="h-full w-full object-cover opacity-60"
             autoplay
             muted
             loop
             playsinline
             preload="none"
-            poster="/images/em-music-logo.png"
           >
             <source src="/videos/hero-bg.mp4" type="video/mp4" />
           </video>
+        ) : (
+          <div class="hero-yt-wrap">
+            <iframe
+              class="hero-yt-iframe"
+              src={heroYoutubeEmbed}
+              title=""
+              frameborder="0"
+              allow="autoplay; encrypted-media"
+              tabindex="-1"
+            ></iframe>
+          </div>
         )}
-        <div class:list={["hero-wave-bg", { "hero-wave-bg--dim": hasHeroVideo }]}>
-          {Array.from({ length: 40 }).map((_, i) => {
-            const height = 25 + Math.abs(Math.sin(i * 1.7)) * 70;
-            const delay = (i % 9) * -0.15;
-            return <span class="hero-wave-bar" style={`height:${height.toFixed(0)}%;animation-delay:${delay}s`}></span>;
-          })}
-        </div>
         <div class="absolute inset-0 bg-gradient-to-b from-ink/40 via-ink/70 to-ink"></div>
         <div class="absolute inset-0 bg-ink/30"></div>
       </div>

@@ -52,35 +52,25 @@
   }
 }
 
-/* onda gigante de fundo do hero (estilo Kronoxx): substitui/acompanha o video real,
-   sempre leve (CSS puro), fica por baixo do video quando ele existir */
-.hero-wave-bg {
+/* video real do hero embutido do YouTube, escalado tipo "object-fit: cover" pra
+   cobrir a secao inteira independente da proporcao da tela (tecnica padrao pra
+   video de fundo via iframe) - some assim que o arquivo proprio existir */
+.hero-yt-wrap {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: clamp(2px, 0.6vw, 6px);
-  padding: 0 4vw;
+  overflow: hidden;
+  pointer-events: none;
 }
-.hero-wave-bg--dim {
-  opacity: 0.35;
-  mix-blend-mode: screen;
-}
-.hero-wave-bar {
-  flex: 1 1 0;
-  max-width: 14px;
-  border-radius: 999px;
-  background: linear-gradient(180deg, #ef3d9a, #7429a8 60%, transparent);
-  transform-origin: bottom;
-  animation: hero-wave-bounce 2.6s ease-in-out infinite;
-}
-@keyframes hero-wave-bounce {
-  0%, 100% { transform: scaleY(0.55); opacity: 0.6; }
-  50% { transform: scaleY(1); opacity: 1; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero-wave-bar { animation: none; }
+.hero-yt-iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 56.25vw; /* 16:9 */
+  min-height: 100vh;
+  min-width: 177.78vh; /* 16:9 */
+  transform: translate(-50%, -50%);
+  pointer-events: none;
 }
 
 .scroll-hint {
