@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glossário rápido | EM Music Produções</title>
+<meta name="description" content="Os termos da indústria musical explicados em uma frase, e o passo a passo de cada música do início ao lançamento.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Poppins:wght@400;600;700;800&family=Lato:wght@400;700&family=Abel&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B0B0C; --raised:#17151A; --line:#2A2730;
+    --paper:#F7F4EE; --paper-soft:rgba(247,244,238,.68); --paper-faint:rgba(247,244,238,.42);
+    --pink:#EF3D9A; --purple:#7429A8;
+    --pink-bg:rgba(239,61,154,.11); --purple-bg:rgba(116,41,168,.16);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--ink); color:var(--paper);
+    font-family:'Lato',sans-serif; font-size:17px; line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:660px; margin:0 auto; padding:0 18px 90px}
+
+  /* topo */
+  header{
+    padding:44px 0 30px; border-bottom:1px solid var(--line); margin-bottom:34px;
+  }
+  .eyebrow{
+    font-family:'Abel',sans-serif; font-size:13px; letter-spacing:.22em; text-transform:uppercase;
+    color:var(--pink); margin:0 0 12px;
+  }
+  h1{
+    font-family:'Anton',sans-serif; font-size:clamp(38px,9vw,58px); line-height:.98;
+    margin:0 0 14px; letter-spacing:.005em; text-transform:uppercase; text-wrap:balance;
+  }
+  h1 em{font-style:normal; background:linear-gradient(96deg,var(--purple),var(--pink)); -webkit-background-clip:text; background-clip:text; color:transparent}
+  .lead{font-size:17px; color:var(--paper-soft); margin:0; max-width:52ch}
+
+  h2{
+    font-family:'Abel',sans-serif; font-size:13px; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--paper-faint); margin:52px 0 16px; padding-bottom:9px; border-bottom:1px solid var(--line);
+  }
+
+  /* etapas */
+  .step{
+    background:var(--raised); border:1px solid var(--line); border-radius:14px;
+    padding:17px 19px 17px 56px; margin-bottom:10px; position:relative;
+  }
+  .step .n{
+    position:absolute; left:17px; top:17px; width:27px; height:27px; border-radius:50%;
+    display:grid; place-items:center; font-family:'Poppins',sans-serif; font-weight:700; font-size:13px;
+    background:var(--line); color:var(--paper-soft);
+  }
+  .step.on{border-color:rgba(239,61,154,.45); background:linear-gradient(180deg,var(--pink-bg),transparent)}
+  .step.on .n{background:linear-gradient(135deg,var(--purple),var(--pink)); color:#fff}
+  .step b{font-family:'Poppins',sans-serif; font-weight:700; font-size:17px; display:block; margin-bottom:5px}
+  .step p{margin:0 0 7px; font-size:16px; color:var(--paper-soft)} .step p:last-child{margin:0}
+  .step .no{color:var(--pink); font-weight:700}
+  .step .yes{color:var(--pink); font-weight:700; font-family:'Poppins',sans-serif}
+  .step .why{font-size:14.5px; color:var(--paper-faint); font-style:italic}
+
+  /* formatos */
+  .f{border:1px solid var(--line); border-radius:16px; padding:22px; margin-bottom:12px; background:var(--raised)}
+  .f.p1{border-color:rgba(239,61,154,.5); background:linear-gradient(160deg,var(--pink-bg),var(--raised) 62%)}
+  .f.p2{border-color:rgba(116,41,168,.55); background:linear-gradient(160deg,var(--purple-bg),var(--raised) 62%)}
+  .f h3{font-family:'Poppins',sans-serif; font-weight:800; font-size:21px; margin:0 0 3px}
+  .f .alias{font-family:'Abel',sans-serif; font-size:14.5px; letter-spacing:.06em; color:var(--pink); margin:0 0 13px; text-transform:uppercase}
+  .f .desc{margin:0 0 14px; font-size:16.5px; color:var(--paper-soft)}
+  .f .row{display:flex; gap:12px; font-size:15px; padding:8px 0; border-top:1px solid var(--line)}
+  .f .row span:first-child{flex:0 0 108px; color:var(--paper-faint); font-family:'Abel',sans-serif; letter-spacing:.05em; text-transform:uppercase; font-size:13px; padding-top:2px}
+  .f .row b{font-family:'Poppins',sans-serif; font-weight:700}
+
+  /* alerta */
+  .warn{
+    border:1px solid rgba(239,61,154,.45); border-radius:16px; padding:22px; margin:30px 0;
+    background:linear-gradient(150deg,var(--purple-bg),var(--pink-bg));
+  }
+  .warn h3{font-family:'Poppins',sans-serif; font-weight:800; font-size:19px; margin:0 0 11px; color:var(--pink)}
+  .warn p{margin:0 0 11px; font-size:16.5px} .warn p:last-child{margin:0}
+  .warn b{color:var(--paper); font-weight:700}
+
+  /* verbetes */
+  .t{background:var(--raised); border:1px solid var(--line); border-radius:14px; padding:16px 19px; margin-bottom:10px}
+  .t b{font-family:'Poppins',sans-serif; font-weight:700; font-size:18px; display:block}
+  .t .also{font-family:'Abel',sans-serif; font-size:13.5px; letter-spacing:.05em; color:var(--paper-faint); display:block; margin-bottom:7px}
+  .t p{margin:0; font-size:16.5px; color:var(--paper-soft)}
+  .t .ex{margin-top:10px; padding-top:10px; border-top:1px dashed var(--line); font-size:15px; color:var(--paper-faint)}
+  .t .ex i{font-style:normal; color:var(--pink); font-weight:700}
+  .t.money{border-left:3px solid var(--purple)}
+
+  /* tabela */
+  .scroll{overflow-x:auto; -webkit-overflow-scrolling:touch}
+  table{width:100%; border-collapse:collapse; font-size:15.5px; min-width:420px}
+  th,td{text-align:left; padding:12px 14px; border-bottom:1px solid var(--line); vertical-align:top}
+  th{font-family:'Abel',sans-serif; font-size:12.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--paper-faint)}
+  td b{font-family:'Poppins',sans-serif; font-weight:700}
+
+  /* perguntas */
+  .q{background:var(--raised); border:1px solid var(--line); border-radius:12px; padding:14px 17px; margin-bottom:9px; font-size:16.5px; color:var(--paper-soft)}
+  .q b{font-family:'Poppins',sans-serif; color:var(--pink); margin-right:9px; font-weight:800}
+
+  /* decisão */
+  .d{border:1px solid var(--line); border-radius:14px; overflow:hidden; margin-bottom:10px}
+  .d .said{padding:14px 17px; font-size:16.5px; background:var(--raised); font-family:'Lato',sans-serif}
+  .d .said::before{content:"“"; color:var(--pink)} .d .said::after{content:"”"; color:var(--pink)}
+  .d .then{padding:13px 17px; font-size:15.5px; display:flex; flex-direction:column; gap:4px; background:rgba(23,21,26,.5)}
+  .d .then b{font-family:'Poppins',sans-serif; font-weight:700; color:var(--pink)}
+  .d .then span{color:var(--paper-faint); font-size:14.5px}
+
+  .never{display:flex; gap:13px; padding:14px 0; border-bottom:1px solid var(--line); font-size:16.5px; color:var(--paper-soft)}
+  .never:last-child{border:none}
+  .never .x{color:var(--pink); font-weight:800; flex:none; font-family:'Poppins',sans-serif}
+
+  footer{
+    margin-top:56px; padding-top:26px; border-top:1px solid var(--line);
+    text-align:center; font-family:'Abel',sans-serif; letter-spacing:.14em; text-transform:uppercase;
+    font-size:12.5px; color:var(--paper-faint);
+  }
+  footer a{color:var(--pink); text-decoration:none}
+  footer a:hover{text-decoration:underline}
+  a:focus-visible{outline:2px solid var(--pink); outline-offset:3px}
+  @media print{body{background:#fff;color:#000} .step,.t,.f,.d{break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">EM Music Produções</p>
+    <h1>Glossário <em>rápido</em></h1>
+    <p class="lead">Os termos certos, explicados em uma frase. E o caminho de cada música, do momento em que nasce até entrar nas plataformas.</p>
+  </header>
+
+  <h2>Como funciona cada música, do início ao fim</h2>
+
+  <div class="step"><span class="n">1</span>
+    <b>A obra nasce</b>
+    <p>Compõe, grava um áudio no celular, anota a letra. Manda a letra e o áudio por email para você mesmo, para ter data registrada.</p>
+    <p class="no">✕ Aqui não cadastra a obra. Só o email.</p>
+    <p class="why">A música ainda pode mudar de letra, de nome ou de parceiro. Cadastrar cedo só gera correção depois.</p>
+  </div>
+
+  <div class="step"><span class="n">2</span>
+    <b>Definir o formato</b>
+    <p>Com o artista: vai ser parceria, cessão total ou licenciamento?</p>
+    <p class="no">✕ Ainda não cadastra.</p>
+    <p class="why">O formato define quem entra como autor e quem recebe o quê.</p>
+  </div>
+
+  <div class="step"><span class="n">3</span>
+    <b>Assinar contrato e declaração de autoria</b>
+    <p>O contrato do formato escolhido, mais a declaração dizendo quem compôs o quê. A soma dos percentuais tem que dar exatamente 100%.</p>
+    <p class="no">✕ Ainda não cadastra.</p>
+  </div>
+
+  <div class="step"><span class="n">4</span>
+    <b>Produzir e gravar</b>
+    <p>Anotar durante a gravação quem tocou o quê, com CPF e associação de cada músico. Isso vira a ficha técnica, e depois ninguém lembra.</p>
+    <p class="no">✕ Ainda não cadastra.</p>
+  </div>
+
+  <div class="step"><span class="n">5</span>
+    <b>Finalizar</b>
+    <p>Mixagem, masterização, capa, versão aprovada pelo artista. A partir daqui a obra não muda mais.</p>
+  </div>
+
+  <div class="step on"><span class="n">6</span>
+    <b>Cadastrar a obra na ABRAMUS</b>
+    <p class="yes">✓ Agora sim cadastra.</p>
+    <p>Cadastra a obra com todos os autores e os percentuais que estão na declaração assinada. É isso que faz o dinheiro do ECAD chegar.</p>
+    <p class="why">Só entra como autor quem realmente compôs.</p>
+  </div>
+
+  <div class="step on"><span class="n">7</span>
+    <b>Gerar o ISRC do fonograma</b>
+    <p>Pelo portal da ABRAMUS. Cada gravação tem o seu. Se regravar a mesma música depois, é outro ISRC.</p>
+  </div>
+
+  <div class="step on"><span class="n">8</span>
+    <b>Enviar para a distribuidora</b>
+    <p>Conferir antes: artista principal, selo EM Music Produções, compositores reais, ISRC preenchido e capa no tamanho certo.</p>
+    <p class="no">✕ Não colocar "EM Music" dentro do título da faixa.</p>
+  </div>
+
+  <div class="step on"><span class="n">9</span>
+    <b>Lançar</b>
+    <p>Agendar a data, avisar o artista, divulgar. Guardar o link de cada plataforma e o UPC gerado.</p>
+  </div>
+
+  <div class="step on"><span class="n">10</span>
+    <b>Prestar contas</b>
+    <p>A cada três meses, puxar o relatório da distribuidora e pagar a parte de cada um em até 10 dias úteis.</p>
+  </div>
+
+  <h2>Três registros diferentes, não confundir</h2>
+  <div class="scroll">
+    <table>
+      <tr><th>O quê</th><th>Quando</th><th>Serve para</th></tr>
+      <tr><td><b>Email para si mesmo</b></td><td>assim que compõe</td><td>ter data. É informal, mas ajuda</td></tr>
+      <tr><td><b>Cadastro na ABRAMUS</b></td><td>obra pronta e contrato assinado</td><td>receber do ECAD</td></tr>
+      <tr><td><b>Registro na Biblioteca Nacional</b></td><td>opcional</td><td>provar autoria em disputa</td></tr>
+    </table>
+  </div>
+  <div class="warn" style="margin-top:16px">
+    <p><b>O email não substitui o cadastro na ABRAMUS.</b> Um dá data, o outro faz o dinheiro chegar.</p>
+  </div>
+
+  <h2>Os três formatos de negociação</h2>
+
+  <div class="f p1">
+    <h3>1. Parceria</h3>
+    <p class="alias">coautoria com divisão de receita</p>
+    <p class="desc">Os dois entram na obra. Ninguém paga nada agora, e o resultado é dividido meio a meio.</p>
+    <div class="row"><span>Recebe agora</span><span>nada</span></div>
+    <div class="row"><span>Recebe depois</span><span><b>sim, 50%, para sempre</b></span></div>
+    <div class="row"><span>Divisão</span><span><b>50% Eder · 50% artista</b></span></div>
+    <div class="row"><span>Contrato</span><span>Contrato de Parceria</span></div>
+  </div>
+
+  <div class="f p2">
+    <h3>2. Cessão total</h3>
+    <p class="alias">venda definitiva dos direitos patrimoniais</p>
+    <p class="desc">Ele paga um valor único e leva os direitos patrimoniais da obra. Você não recebe mais nada dela.</p>
+    <div class="row"><span>Recebe agora</span><span><b>sim, valor cheio</b></span></div>
+    <div class="row"><span>Recebe depois</span><span>nunca mais</span></div>
+    <div class="row"><span>Cuidado</span><span>se a música estourar, você assiste de fora</span></div>
+    <div class="row"><span>Contrato</span><span>Cessão Total de Direitos Patrimoniais</span></div>
+  </div>
+
+  <div class="f">
+    <h3>3. Cessão parcial ou licenciamento</h3>
+    <p class="alias">você continua titular e autoriza o uso</p>
+    <p class="desc">Ele usa por um prazo e para uma finalidade combinada. Terminou o prazo, os direitos voltam para você.</p>
+    <div class="row"><span>Recebe agora</span><span>sim</span></div>
+    <div class="row"><span>Recebe depois</span><span><b>sim, enquanto durar</b></span></div>
+    <div class="row"><span>Bom quando</span><span>quase sempre. É o mais equilibrado</span></div>
+    <div class="row"><span>Contrato</span><span>Licença de Uso de Obra Musical</span></div>
+  </div>
+
+  <div class="warn">
+    <h3>A regra que não tem jeito</h3>
+    <p>Os <b>direitos patrimoniais</b> podem ser vendidos, cedidos ou licenciados à vontade. É o dinheiro da obra.</p>
+    <p>Os <b>direitos morais</b> não. São inalienáveis por lei. Quem compôs continua sendo o autor, mesmo tendo vendido tudo.</p>
+    <p>Então, na cessão total: <b>o dinheiro vai todo para o comprador, e seu nome continua no registro da obra.</b></p>
+    <p>Se alguém pedir para assinar como autor de música que não compôs, é declaração falsa. O contrato não protege, e o cadastro pode ser contestado depois.</p>
+  </div>
+
+  <h2>Palavras que aparecem toda hora</h2>
+
+  <div class="t"><b>Autor</b><span class="also">também: compositor</span>
+    <p>Quem escreveu a letra ou criou a melodia.</p>
+    <div class="ex">Só quem criou. <i>Não se compra e não se transfere.</i></div></div>
+
+  <div class="t"><b>Obra</b><span class="also">também: composição</span>
+    <p>A música em si: letra e melodia.</p>
+    <div class="ex">Diferente da gravação. <i>São dois direitos separados.</i></div></div>
+
+  <div class="t"><b>Fonograma</b><span class="also">também: master, a gravação</span>
+    <p>A gravação registrada, o arquivo pronto.</p>
+    <div class="ex">Pertence ao <i>produtor fonográfico</i>, quem bancou e correu o risco.</div></div>
+
+  <div class="t money"><b>Direitos patrimoniais</b>
+    <p>O direito de explorar economicamente a obra.</p>
+    <div class="ex">Esses <i>podem</i> ser cedidos ou licenciados.</div></div>
+
+  <div class="t"><b>Direitos morais</b>
+    <p>O vínculo entre quem criou e a obra criada.</p>
+    <div class="ex">Esses <i>nunca</i> podem ser cedidos. É lei.</div></div>
+
+  <div class="t money"><b>Direitos conexos</b>
+    <p>O que cabe a quem interpretou, tocou ou produziu a gravação.</p>
+    <div class="ex">Diferente do direito de autor. <i>Um não anula o outro.</i></div></div>
+
+  <div class="t money"><b>Royalties</b>
+    <p>O valor que a obra rende cada vez que é executada.</p>
+    <div class="ex">Vem do streaming, do rádio, da TV e de execução ao vivo.</div></div>
+
+  <div class="t"><b>ECAD</b>
+    <p>O escritório que arrecada quando a música é executada em público.</p>
+    <div class="ex">Rádio, TV, show, bar. <i>Repassa pela ABRAMUS.</i></div></div>
+
+  <div class="t"><b>ABRAMUS</b>
+    <p>A associação que recebe do ECAD e repassa a você.</p>
+    <div class="ex">Sem filiação, <i>o dinheiro não chega</i>.</div></div>
+
+  <div class="t"><b>ISRC</b>
+    <p>O código de identificação de cada fonograma.</p>
+    <div class="ex">Sem ele a plataforma <i>não sabe a quem pagar</i>.</div></div>
+
+  <div class="t"><b>UPC</b>
+    <p>O código do lançamento inteiro: single, EP ou álbum.</p>
+    <div class="ex">É o código de barras da obra.</div></div>
+
+  <div class="t"><b>Distribuidora</b>
+    <p>Quem entrega o fonograma às plataformas digitais.</p>
+    <div class="ex">Artista <i>não envia direto</i>. Sempre passa por uma.</div></div>
+
+  <div class="t"><b>Editora musical</b>
+    <p>Empresa que administra a obra: registra, cobra e presta contas.</p>
+    <div class="ex">Fica com um percentual em troca do trabalho.</div></div>
+
+  <div class="t"><b>Produtor musical</b>
+    <p>Quem faz o arranjo e dirige a gravação.</p>
+    <div class="ex">Recebe cachê. <i>Depois não recebe mais</i>, salvo se combinar percentual.</div></div>
+
+  <div class="t"><b>Produtor fonográfico</b>
+    <p>Quem assume iniciativa, investimento e risco da gravação.</p>
+    <div class="ex">É <i>titular do fonograma</i> e recebe do streaming.</div></div>
+
+  <div class="t"><b>Intérprete</b>
+    <p>Quem canta ou executa na gravação.</p>
+    <div class="ex">Interpretar <i>não faz</i> de alguém titular da obra.</div></div>
+
+  <div class="t money"><b>Cachê</b>
+    <p>O valor pago pela apresentação ou pelo serviço.</p>
+    <div class="ex">Acaba quando o trabalho acaba.</div></div>
+
+  <div class="t"><b>Sincronização</b>
+    <p>Uso da música casada com imagem: novela, filme, comercial.</p>
+    <div class="ex">Costuma ser <i>o que melhor remunera</i>.</div></div>
+
+  <div class="t"><b>Exclusividade</b>
+    <p>Só o contratante pode usar aquela obra.</p>
+    <div class="ex">Exclusividade <i>custa mais caro</i>. Sempre.</div></div>
+
+  <h2>Cinco perguntas que resolvem o atendimento</h2>
+
+  <div class="q"><b>1</b>Você quer uma obra pronta ou quer que eu componha sob encomenda?</div>
+  <div class="q"><b>2</b>Precisa de exclusividade, ou outra pessoa também pode usar?</div>
+  <div class="q"><b>3</b>Prefere pagar um valor agora, ou dividir o que a obra render?</div>
+  <div class="q"><b>4</b>Já tem a gravação, ou vai precisar de produção também?</div>
+  <div class="q"><b>5</b>Você é filiado à ABRAMUS ou a outra associação?</div>
+
+  <h2>O cliente falou, você faz</h2>
+
+  <div class="d"><div class="said">Quero fazer parceria com você</div>
+    <div class="then"><b>Parceria 50/50</b><span>Contrato de Parceria · recebe 50% para sempre</span></div></div>
+  <div class="d"><div class="said">Quero comprar a música inteira</div>
+    <div class="then"><b>Cessão total</b><span>Cessão de Direitos Patrimoniais · não recebe mais</span></div></div>
+  <div class="d"><div class="said">Quero usar por um tempo</div>
+    <div class="then"><b>Licenciamento</b><span>Licença de Uso · recebe enquanto durar</span></div></div>
+  <div class="d"><div class="said">Quero só que você produza</div>
+    <div class="then"><b>Prestação de serviço</b><span>Contrato de Produção · só o cachê</span></div></div>
+  <div class="d"><div class="said">Quero você cuidando da minha carreira</div>
+    <div class="then"><b>Agenciamento</b><span>Contrato de Agenciamento · percentual enquanto durar</span></div></div>
+
+  <h2>Nunca faça</h2>
+
+  <div class="never"><span class="x">✕</span><span>Registrar como autor quem não compôs. Nem a pedido do cliente.</span></div>
+  <div class="never"><span class="x">✕</span><span>Cadastrar a obra antes do contrato assinado.</span></div>
+  <div class="never"><span class="x">✕</span><span>Fechar de boca. Todo formato tem contrato próprio.</span></div>
+  <div class="never"><span class="x">✕</span><span>Cobrar tudo junto. Compor, produzir e mixar são três coisas.</span></div>
+  <div class="never"><span class="x">✕</span><span>Prometer quanto a obra vai render. Ninguém sabe.</span></div>
+  <div class="never"><span class="x">✕</span><span>Enviar à distribuidora sem conferir os metadados.</span></div>
+  <div class="never"><span class="x">✕</span><span>Entregar arquivo antes de receber o combinado.</span></div>
+
+  <footer>
+    <a href="/">emmusicproducoes.com.br</a> · consulta interna
+  </footer>
+
+</div>
+</body>
+</html>
